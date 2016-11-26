@@ -28,5 +28,8 @@
 ## 自动构建:
 
 - [使用Travis CI自动部署你的Hexo博客到Github上](http://www.jianshu.com/p/e22c13d85659)
+    - 注意`settings`中勾选：` Build only if .travis.yml is present` 选项
+    - 只构建： `blog_source` 分支
+- [Travis CI 查看自动构建过程](https://travis-ci.org/llinmeng/llinmeng.github.io)
 
 
