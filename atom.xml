@@ -1,0 +1,1432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>llinmeng&#39;s blog</title>
+  <subtitle>前端技术开发</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://llinmeng.github.io/"/>
+  <updated>2016-11-26T08:03:18.791Z</updated>
+  <id>http://llinmeng.github.io/</id>
+  
+  <author>
+    <name>llinmeng</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用Travis CI自动部署你的Hexo博客到Github</title>
+    <link href="http://llinmeng.github.io/2016/11/16/github-hexo-blog-auto-deploy/"/>
+    <id>http://llinmeng.github.io/2016/11/16/github-hexo-blog-auto-deploy/</id>
+    <published>2016-11-16T14:15:31.000Z</published>
+    <updated>2016-11-26T08:03:18.791Z</updated>
+    
+    <content type="html"><![CDATA[<p>本篇详细介绍使用 Travis CI 自动部署 Hexo 博客到 Github.</p>
+<a id="more"></a>
+<h2 id="部署说明"><a href="#部署说明" class="headerlink" title="部署说明:"></a>部署说明:</h2><ul>
+<li>本博客, 当前已成功使用 <code>Travis CI</code> 配合 <code>github</code> 多分支, 实现自动部署.</li>
+<li>详细参考我博客仓库: <ul>
+<li><a href="https://github.com/hhstore/hhstore.github.io/tree/blog_source" target="_blank" rel="external">blog_source 分支</a> </li>
+<li>本分支, 包含博客全部资源文件, 配置文件.</li>
+</ul>
+</li>
+</ul>
+<h3 id="博客仓库结构"><a href="#博客仓库结构" class="headerlink" title="博客仓库结构:"></a>博客仓库结构:</h3><ul>
+<li><code>hhstore.github.io</code> 仓库:<ul>
+<li><code>master</code> 分支: 自动发布分支, <code>Travis CI</code> 自动生成.</li>
+<li><code>blog_source</code> 分支: 博客源文件.</li>
+</ul>
+</li>
+</ul>
+<h3 id="博客发布流程"><a href="#博客发布流程" class="headerlink" title="博客发布流程:"></a>博客发布流程:</h3><pre><code>- 本地 git 仓库, 拉取 `blog_source` 分支
+- 在此分支, 编辑博客文档.
+- 推送本地文档, 到 github.
+- `Travis CI` 通过钩子, 自动触发`发布流程`.
+- `Travis CI` 自动把最新博客发布到 `master` 分支.
+</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 执行推送, 其他全自动:</span></div><div class="line">git push blog_source blog_source</div></pre></td></tr></table></figure>
+<h2 id="部署参考"><a href="#部署参考" class="headerlink" title="部署参考:"></a>部署参考:</h2><ul>
+<li>具体部署过程, 请参考此篇, 步骤非常详细, 没有问题.<ul>
+<li><a href="http://www.jianshu.com/p/e22c13d85659" target="_blank" rel="external">手把手教你使用Travis CI自动部署你的Hexo博客到Github上</a></li>
+</ul>
+</li>
+<li>可参考我博客的 <code>blog_source</code> 分支配置文件.</li>
+</ul>
+<h2 id="部署提醒"><a href="#部署提醒" class="headerlink" title="部署提醒:"></a>部署提醒:</h2><ul>
+<li>个人博客, 对 博客分支的 <code>token 环境变量</code>, 作了修改.</li>
+<li>小坑: <ul>
+<li>.travis.yml 文件里最后的 git 仓库访问配置是 HTTTPS 方式, 不是 GIT 方式.</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本篇详细介绍使用 Travis CI 自动部署 Hexo 博客到 Github.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://llinmeng.github.io/categories/Hexo/"/>
+    
+    
+      <category term="github" scheme="http://llinmeng.github.io/tags/github/"/>
+    
+      <category term="Hexo" scheme="http://llinmeng.github.io/tags/Hexo/"/>
+    
+      <category term="Next" scheme="http://llinmeng.github.io/tags/Next/"/>
+    
+      <category term="blog" scheme="http://llinmeng.github.io/tags/blog/"/>
+    
+      <category term="TravisCI" scheme="http://llinmeng.github.io/tags/TravisCI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac 平台: 使用 vscode 搭建 Golang 开发环境</title>
+    <link href="http://llinmeng.github.io/2016/11/15/mac-osx-use-vscode-config-golang-env/"/>
+    <id>http://llinmeng.github.io/2016/11/15/mac-osx-use-vscode-config-golang-env/</id>
+    <published>2016-11-15T16:42:13.000Z</published>
+    <updated>2016-11-26T08:03:18.791Z</updated>
+    
+    <content type="html"><![CDATA[<p>本篇介绍 Mac 平台 使用 virtual studio code 搭建 golang 开发环境, 包含 debug 环境的配置.</p>
+<a id="more"></a>
+<h2 id="1-vscode-简介"><a href="#1-vscode-简介" class="headerlink" title="1. vscode 简介:"></a>1. vscode 简介:</h2><h3 id="1-1-vscode-亮点"><a href="#1-1-vscode-亮点" class="headerlink" title="1.1 vscode 亮点:"></a>1.1 vscode 亮点:</h3><ul>
+<li>Microsoft 开发, 高质量, 高颜值</li>
+<li>启动速度比 atom 快, 资源占用少</li>
+<li>插件比 atom 好用, 官方插件库下载安装快</li>
+<li>对 Python, golang 支持够好</li>
+<li>集成终端好用</li>
+<li>debug 功能好用(简直是 mini 的 IDE)</li>
+</ul>
+<h3 id="1-2-对比-IDE"><a href="#1-2-对比-IDE" class="headerlink" title="1.2 对比 IDE:"></a>1.2 对比 IDE:</h3><ul>
+<li>之前一直使用: pycharm + go 插件, 搭配开发 golang.</li>
+<li>优点: <ul>
+<li>go 插件的 debug 功能,比较强大</li>
+<li>pycharm 的有强大的代码跳转,补全功能.</li>
+</ul>
+</li>
+<li>缺点:<ul>
+<li>pycharm 每次建立项目索引比较慢.</li>
+<li>启动比较笨重, 有些时候只是写测试代码, 不太需要启动 IDE.</li>
+</ul>
+</li>
+<li>vscode 的优点, 刚好可以弥补 pycharm 的不足.</li>
+<li>以后搭配2者作开发.很方便.</li>
+</ul>
+<h3 id="1-3-技巧操作"><a href="#1-3-技巧操作" class="headerlink" title="1.3 技巧操作:"></a>1.3 技巧操作:</h3><ul>
+<li>列编辑模式: ultraedit 中特色功能<ul>
+<li>快捷键: <code>shift + alt + 鼠标左键</code></li>
+<li>vscode 版本 &gt; 1.2.0</li>
+</ul>
+</li>
+<li>Ctrl+P 模式: (Mac 是 <code>CMD+P</code>)<ul>
+<li>直接输入文件名，快速打开文件</li>
+<li><code>:</code> 跳转到<code>行数</code>，也可以<code>Ctrl+G</code>直接进入(Mac 是 <code>CMD+G</code>)</li>
+<li><code>@</code> 跳转到symbol（搜索变量或者函数），也可以Ctrl+Shift+O直接进入</li>
+<li><code>@:</code>根据分类跳转symbol，查找属性或函数，也可以Ctrl+Shift+O后输入:进入</li>
+<li><code>#</code> 根据名字查找symbol，也可以Ctrl+T</li>
+</ul>
+</li>
+<li>编辑:<ul>
+<li>上下移动一行： <code>Alt+Up</code> 或 <code>Alt+Down</code></li>
+<li>向上向下复制一行： <code>Shift+Alt+Up</code> 或 <code>Shift+Alt+Down</code></li>
+<li>代码格式化：<code>Shift+Alt+F</code>，或 <code>Ctrl+Shift+P</code> 后输入 <code>format code</code></li>
+<li>更改代码文件语言模式: 显示–&gt;状态栏显示.</li>
+</ul>
+</li>
+<li>代码重构:<ul>
+<li>跳转到定义处：<code>F12</code></li>
+<li>列出所有的引用：<code>Shift+F12</code></li>
+<li>重命名：比如要修改一个方法名，可以选中后按F2，输入新的名字，回车，会发现所有的文件都修改过了。</li>
+</ul>
+</li>
+<li>显示相关:<ul>
+<li>侧边栏显/隐：<code>Ctrl+B</code></li>
+<li>预览markdown: <code>Ctrl+Shift+V</code></li>
+<li>双栏对比: <code>Ctrl+\</code></li>
+</ul>
+</li>
+<li>皮肤预览:<ul>
+<li>f1后输入 theme 回车，然后上下键即可预览</li>
+</ul>
+</li>
+<li><a href="https://nshen.net/article/2015-11-20/vscode/" target="_blank" rel="external">学会用好 Visual Studio Code</a></li>
+<li><a href="http://geek.csdn.net/news/detail/94108" target="_blank" rel="external">VS Code tips and tricks 翻译</a></li>
+<li><a href="https://github.com/Microsoft/vscode-tips-and-tricks" target="_blank" rel="external">VS Code Tips and Tricks</a></li>
+</ul>
+<h2 id="2-vscode-安装"><a href="#2-vscode-安装" class="headerlink" title="2 vscode 安装:"></a>2 vscode 安装:</h2><ul>
+<li>官网下载安装: <a href="https://code.visualstudio.com/" target="_blank" rel="external">vscode 官网</a></li>
+<li>brew cask 安装:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># 安装:</span></div><div class="line">brew cask install visual-studio-code</div><div class="line"></div><div class="line"><span class="comment"># 查看 vscode 信息:</span></div><div class="line">-&gt; % brew cask info visual-studio-code</div><div class="line"></div><div class="line">visual-studio-code: 1.3.1,e6b4afa53e9c0f54edef1673de9001e9f0f547ae</div><div class="line">Microsoft Visual Studio Code, VS Code</div><div class="line">https://code.visualstudio.com/</div><div class="line">Not installed</div><div class="line">https://github.com/caskroom/homebrew-cask/blob/master/Casks/visual-studio-code.rb</div><div class="line">==&gt; Contents</div><div class="line">  Visual Studio Code.app (app)</div><div class="line">  /Applications/Visual Studio Code.app/Contents/Resources/app/bin/code (binary)</div></pre></td></tr></table></figure>
+<h2 id="3-vscode-常用插件安装"><a href="#3-vscode-常用插件安装" class="headerlink" title="3 vscode 常用插件安装:"></a>3 vscode 常用插件安装:</h2><ul>
+<li>基础插件:<ul>
+<li>vscode-icons: 颜值, 彩色文件,目录</li>
+<li>Material Theme Kit: 编辑器 UI 主题</li>
+<li>visual studio code settings sync: 同步 vscode 配置文件</li>
+</ul>
+</li>
+<li>开发必备:<ul>
+<li>code runner: 执行 go, python,各种代码</li>
+<li>beautify : 格式化代码</li>
+<li>git history:</li>
+<li>go: 开发必备</li>
+<li>python: 开发必备</li>
+<li>docker support:</li>
+<li>debugger for chrome:</li>
+<li>bootstrap3 snippets: </li>
+<li>html snippets: 各种 补全用的 snippets, 官方插件库搜索添加.</li>
+</ul>
+</li>
+<li>补充: <a href="https://www.zhihu.com/question/40640654" target="_blank" rel="external">Visual Studio Code有哪些你常用的插件？- 知乎</a></li>
+</ul>
+<h2 id="4-vscode-配置-golang-开发环境"><a href="#4-vscode-配置-golang-开发环境" class="headerlink" title="4. vscode 配置 golang 开发环境:"></a>4. vscode 配置 golang 开发环境:</h2><h3 id="4-1-安装-golang"><a href="#4-1-安装-golang" class="headerlink" title="4.1 安装 golang:"></a>4.1 安装 golang:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># 安装:</div><div class="line">brew install go</div><div class="line"></div><div class="line"># 查看安装成功:</div><div class="line">-&gt; % go version</div><div class="line">go version go1.7.3 darwin/amd64</div></pre></td></tr></table></figure>
+<h3 id="4-2-配置-golang-环境变量"><a href="#4-2-配置-golang-环境变量" class="headerlink" title="4.2 配置 golang 环境变量:"></a>4.2 配置 golang 环境变量:</h3><ul>
+<li><code>GOPATH</code> : 必须设置</li>
+<li><code>GOBIN</code>: 非必需, 但通常顺手设置.</li>
+<li>设置办法: 添加到 zsh 的配置文件: <code>~/.zprofile</code></li>
+<li>参考如下配置 <code>~/.zprofile</code>:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#######################################################</div><div class="line">#                 for Golang:</div><div class="line">#######################################################</div><div class="line"></div><div class="line">#-------------------------------</div><div class="line"># set GOPATH:</div><div class="line">#-------------------------------</div><div class="line"></div><div class="line"># go lib path:</div><div class="line">GO_LIB_PATH=$&#123;HOME&#125;/iGit/iSpace/iGo/libdir</div><div class="line"></div><div class="line"># go user workspace:</div><div class="line">GO_WORK_PATH=$&#123;HOME&#125;/iGit/iSpace/iGo/workdir</div><div class="line"></div><div class="line">export GOPATH=$&#123;GO_LIB_PATH&#125;:$&#123;GO_WORK_PATH&#125;</div><div class="line"></div><div class="line">#-------------------------------</div><div class="line"># set GOBIN:</div><div class="line">#-------------------------------</div><div class="line"></div><div class="line">export GOBIN=&quot;$&#123;GO_LIB_PATH&#125;/bin:$&#123;GO_WORK_PATH&#125;/bin&quot;</div><div class="line">export PATH=&quot;$&#123;PATH&#125;:$&#123;GOBIN&#125;&quot;</div></pre></td></tr></table></figure>
+<ul>
+<li>检查 golang 环境变量设置成功:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># 查看环境变量:</span></div><div class="line"><span class="comment"># 关键看 GOPATH 和 GOBIN,  GOROOT</span></div><div class="line">-&gt; % go env</div><div class="line"></div><div class="line">GOARCH=<span class="string">"amd64"</span></div><div class="line">GOBIN=<span class="string">"/Users/hhstore/iGit/iSpace/iGo/libdir/bin:/Users/hhstore/iGit/iSpace/iGo/workdir/bin"</span></div><div class="line">GOEXE=<span class="string">""</span></div><div class="line">GOHOSTARCH=<span class="string">"amd64"</span></div><div class="line">GOHOSTOS=<span class="string">"darwin"</span></div><div class="line">GOOS=<span class="string">"darwin"</span></div><div class="line">GOPATH=<span class="string">"/Users/hhstore/iGit/iSpace/iGo/libdir:/Users/hhstore/iGit/iSpace/iGo/workdir"</span></div><div class="line">GORACE=<span class="string">""</span></div><div class="line">GOROOT=<span class="string">"/usr/local/Cellar/go/1.7.3/libexec"</span></div><div class="line">GOTOOLDIR=<span class="string">"/usr/local/Cellar/go/1.7.3/libexec/pkg/tool/darwin_amd64"</span></div><div class="line">CC=<span class="string">"clang"</span></div><div class="line">GOGCCFLAGS=<span class="string">"-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -gno-record-gcc-switches -fno-common"</span></div><div class="line">CXX=<span class="string">"clang++"</span></div><div class="line">CGO_ENABLED=<span class="string">"1"</span></div></pre></td></tr></table></figure>
+<h3 id="4-3-配置-golang-开发-debug-模式"><a href="#4-3-配置-golang-开发-debug-模式" class="headerlink" title="4.3 配置 golang 开发 debug 模式:"></a>4.3 配置 golang 开发 debug 模式:</h3><h4 id="4-3-1-安装-golang-debug-插件-delve"><a href="#4-3-1-安装-golang-debug-插件-delve" class="headerlink" title="4.3.1 安装 golang debug 插件 delve:"></a>4.3.1 安装 golang debug 插件 delve:</h4><ul>
+<li>golang 调试工具: delve</li>
+<li>安装 <code>delve</code>: <a href="https://github.com/derekparker/delve/blob/master/Documentation/installation/osx/install.md" target="_blank" rel="external">Installation on OSX</a></li>
+<li>Mac 平台: <ul>
+<li><code>必须用 brew 安装</code>, </li>
+<li><code>不要直接使用 go get 安装</code>, 会出现签名, 权限问题, 导致 无法使用 <code>dlv</code> 调试工具.</li>
+</ul>
+</li>
+<li>请严格参考 <code>delve</code> 项目官方安装文档.这一步最容易出问题.</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 安装 delev 工具:</span></div><div class="line">brew install go-delve/delve/delve</div></pre></td></tr></table></figure>
+<ul>
+<li>查看安装情况:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 查看安装路径: (go get 安装路径, 必然不是这个)</span></div><div class="line">-&gt; % <span class="built_in">which</span> dlv</div><div class="line">/usr/<span class="built_in">local</span>/bin/dlv</div><div class="line"></div><div class="line"><span class="comment"># 查看 dlv 版本:</span></div><div class="line">-&gt; % dlv version</div><div class="line">Delve Debugger</div><div class="line">Version: 0.11.0-alpha</div><div class="line">Build: v0.11.0</div><div class="line"></div><div class="line"><span class="comment"># 查看安装情况:</span></div><div class="line">-&gt; % brew info delve</div><div class="line"></div><div class="line">go-delve/delve/delve: stable 0.11.0, HEAD</div><div class="line">Debugger <span class="keyword">for</span> the Go programming language.</div><div class="line">https://github.com/derekparker/delve</div><div class="line">/usr/<span class="built_in">local</span>/Cellar/delve/0.11.0 (6 files, 7.4M) *</div><div class="line">  Built from <span class="built_in">source</span> on 2016-11-15 at 14:14:07</div><div class="line">From: https://github.com/go-delve/homebrew-delve/blob/master/Formula/delve.rb</div><div class="line">==&gt; Dependencies</div><div class="line">Build: go ✔</div><div class="line">==&gt; Caveats</div><div class="line">If you get <span class="string">"could not launch process: could not fork/exec"</span>, you need to try</div><div class="line"><span class="keyword">in</span> a new terminal.</div><div class="line"></div><div class="line">When uninstalling, to remove the dlv-cert certificate, run this <span class="built_in">command</span>:</div><div class="line"></div><div class="line">    $ sudo security delete-certificate -t -c dlv-cert /Library/Keychains/System.keychain</div><div class="line"></div><div class="line">Alternatively, you may want to delete from the Keychain (with the Imported private key).</div></pre></td></tr></table></figure>
+<ul>
+<li>配置问题解决:<ul>
+<li>error: could not launch process: could not fork/exec<ul>
+<li>原因: 没有使用 brew 安装, 请使用 brew 安装, </li>
+</ul>
+</li>
+<li>error: <a href="https://github.com/derekparker/delve/issues/159" target="_blank" rel="external">delve/issues/159</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="4-3-2-使用-vscode-自动安装-debug-必备的插件"><a href="#4-3-2-使用-vscode-自动安装-debug-必备的插件" class="headerlink" title="4.3.2 使用 vscode 自动安装 debug 必备的插件:"></a>4.3.2 使用 vscode 自动安装 debug 必备的插件:</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># 如下工具: vscode 会自动安装:</span></div><div class="line"><span class="comment"># 基本不会出现问题:</span></div><div class="line">go get -u -v github.com/nsf/gocode</div><div class="line">go get -u -v github.com/rogpeppe/godef</div><div class="line">go get -u -v github.com/golang/lint/golint</div><div class="line">go get -u -v github.com/lukehoban/go-outline</div><div class="line">go get -u -v sourcegraph.com/sqs/goreturns</div><div class="line">go get -u -v golang.org/x/tools/cmd/gorename</div><div class="line">go get -u -v github.com/tpng/gopkgs</div><div class="line">go get -u -v github.com/newhook/go-symbols</div><div class="line">go get -u -v golang.org/x/tools/cmd/guru</div></pre></td></tr></table></figure>
+<h4 id="4-3-3-自定义配置-vscode"><a href="#4-3-3-自定义配置-vscode" class="headerlink" title="4.3.3 自定义配置 vscode:"></a>4.3.3 自定义配置 vscode:</h4><ul>
+<li>修改: 首选项/用户设置:</li>
+<li>添加如下配置:<ul>
+<li><code>settings.json</code></li>
+</ul>
+</li>
+<li>关键修改: <ul>
+<li><code>go.gopath</code></li>
+<li><code>go.goroot</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">// 将设置放入此文件中以覆盖默认设置</div><div class="line">&#123;</div><div class="line">    &quot;files.autoSave&quot;: &quot;afterDelay&quot;,</div><div class="line">    // 以像素为单位控制字号。</div><div class="line">    &quot;editor.fontSize&quot;: 14,</div><div class="line"></div><div class="line">    // 自定义要在 OS X 上运行的终端应用程序。</div><div class="line">    &quot;terminal.external.osxExec&quot;: &quot;iterm.app&quot;,</div><div class="line"></div><div class="line"></div><div class="line">// Go configuration</div><div class="line">    // Specifies the GOPATH to use when no environment variable is set.</div><div class="line">    // 这是我个人的 GOPATH, 设置2个, 首个为 lib 路径, 次个为个人开发工作区</div><div class="line">    &quot;go.gopath&quot;: &quot;/Users/hhstore/iGit/iSpace/iGo/libdir:/Users/hhstore/iGit/iSpace/iGo/workdir&quot;,</div><div class="line">     // Specifies the GOROOT to use when no environment variable is set.</div><div class="line">    &quot;go.goroot&quot;: &quot;/usr/local/Cellar/go/1.7.3/libexec&quot;,</div><div class="line"></div><div class="line">    &quot;workbench.statusBar.visible&quot;: false</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="4-3-4-测试-golang-debug-效果"><a href="#4-3-4-测试-golang-debug-效果" class="headerlink" title="4.3.4 测试 golang debug 效果:"></a>4.3.4 测试 golang debug 效果:</h4><ul>
+<li>修改: launch.json<ul>
+<li>此文件在执行 debug 时, 会根据提示, 自动生成.</li>
+<li>生成在项目根目录下: <code>/Users/hhstore/iGit/iSpace/iGo/.vscode/launch.json</code></li>
+</ul>
+</li>
+<li>根据具体情况, 修改: <code>program</code> 参数值.</li>
+<li><p>具体参考如下图示.</p>
+</li>
+<li><p>debug 代码目录:<br><img src="https://github.com/hhstore/hhstore.github.io/blob/master/images/2016/11/20161115-002.png?raw=true" alt="测试图片"></p>
+</li>
+</ul>
+<ul>
+<li>debug 断点效果图:<br><img src="https://github.com/hhstore/hhstore.github.io/blob/master/images/2016/11/20161115-001.png?raw=true" alt="测试图片"></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本篇介绍 Mac 平台 使用 virtual studio code 搭建 golang 开发环境, 包含 debug 环境的配置.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tools" scheme="http://llinmeng.github.io/categories/Tools/"/>
+    
+    
+      <category term="Mac" scheme="http://llinmeng.github.io/tags/Mac/"/>
+    
+      <category term="vscode" scheme="http://llinmeng.github.io/tags/vscode/"/>
+    
+      <category term="Golang" scheme="http://llinmeng.github.io/tags/Golang/"/>
+    
+      <category term="IDE" scheme="http://llinmeng.github.io/tags/IDE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Github 国内加速访问</title>
+    <link href="http://llinmeng.github.io/2016/11/01/github-fast-host/"/>
+    <id>http://llinmeng.github.io/2016/11/01/github-fast-host/</id>
+    <published>2016-11-01T17:12:10.000Z</published>
+    <updated>2016-11-26T08:03:18.791Z</updated>
+    
+    <content type="html"><![CDATA[<p>本篇介绍如何通过修改本机 host, 提升 github 访问速度.</p>
+<a id="more"></a>
+<h2 id="前述"><a href="#前述" class="headerlink" title="前述:"></a>前述:</h2><ul>
+<li>最近发现 github 访问非常慢.</li>
+<li>办公网络: <ul>
+<li>100M 电信共享, 测试 VPN 访问很慢. git clone 没法用.</li>
+<li>100M 联通独享, 测试 VPN 访问很慢. git clone 较快.</li>
+</ul>
+</li>
+<li>猜测是 github 的 部分 CDN 被墙了.</li>
+<li>搜索找到解决办法, 记录如下, 备复查.</li>
+</ul>
+<h2 id="Mac-修改方法"><a href="#Mac-修改方法" class="headerlink" title="Mac 修改方法:"></a>Mac 修改方法:</h2><h3 id="修改-etc-hosts"><a href="#修改-etc-hosts" class="headerlink" title="修改 /etc/hosts:"></a>修改 /etc/hosts:</h3><ul>
+<li>特别提醒:<ul>
+<li>网上找到的 host, 不要轻易添加.</li>
+<li>先通过 ping 查看一下. 是否 ping 的通, 且速度是否够快.</li>
+<li>添加了 不同的 host IP, 反而会使访问速度更慢.</li>
+<li>上述 IP, 是在联通网络下, 访问非常快. 使用前, 请自行测试.</li>
+</ul>
+</li>
+<li>添加如下内容:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">###################################</div><div class="line">#       Github:</div><div class="line">###################################</div><div class="line">103.245.222.249 github.global.ssl.fastly.net</div><div class="line"></div><div class="line">103.245.222.133 assets-cdn.github.com</div><div class="line">23.235.47.133   assets-cdn.github.com</div><div class="line"></div><div class="line">185.31.19.133   avatars1.githubusercontent.com</div></pre></td></tr></table></figure>
+<h3 id="修改-etc-resolv-conf"><a href="#修改-etc-resolv-conf" class="headerlink" title="修改 /etc/resolv.conf"></a>修改 /etc/resolv.conf</h3><ul>
+<li>添加如下内容:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># add for github:</div><div class="line">nameserver 8.8.8.8</div><div class="line">nameserver 8.8.4.4</div><div class="line">nameserver 114.114.114.114</div></pre></td></tr></table></figure>
+<h3 id="刷新-NDS-使之生效"><a href="#刷新-NDS-使之生效" class="headerlink" title="刷新 NDS, 使之生效:"></a>刷新 NDS, 使之生效:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo dscacheutil -flushcache</div></pre></td></tr></table></figure>
+<h2 id="Linux-修改方法"><a href="#Linux-修改方法" class="headerlink" title="Linux 修改方法:"></a>Linux 修改方法:</h2><ul>
+<li><p>同样修改:</p>
+<ul>
+<li>/etc/hosts</li>
+<li>/etc/resolv.conf</li>
+</ul>
+</li>
+<li><p>刷新启动命令:</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo /etc/init.d/networking restart</div></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考:"></a>参考:</h2><ul>
+<li><a href="http://chenxuhua.com/technology/githubjia-su-fang-wen" target="_blank" rel="external">GitHub加速访问</a></li>
+<li><a href="http://www.jianshu.com/p/a578963f10f0" target="_blank" rel="external">Github访问很慢的解决方法</a></li>
+<li><a href="https://segmentfault.com/a/1190000004171536" target="_blank" rel="external">GtiHub访问慢解决办法</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本篇介绍如何通过修改本机 host, 提升 github 访问速度.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tools" scheme="http://llinmeng.github.io/categories/Tools/"/>
+    
+    
+      <category term="github" scheme="http://llinmeng.github.io/tags/github/"/>
+    
+      <category term="vpn" scheme="http://llinmeng.github.io/tags/vpn/"/>
+    
+      <category term="host" scheme="http://llinmeng.github.io/tags/host/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网络编程socket IO核心概念对比: 阻塞,非阻塞,同步,异步, select, epoll</title>
+    <link href="http://llinmeng.github.io/2016/08/24/socket-io-programming/"/>
+    <id>http://llinmeng.github.io/2016/08/24/socket-io-programming/</id>
+    <published>2016-08-24T22:12:10.000Z</published>
+    <updated>2016-11-26T08:03:18.791Z</updated>
+    
+    <content type="html"><![CDATA[<p>本篇介绍 socket 编程最核心的概念区别.</p>
+<a id="more"></a>
+<h2 id="高质量参考"><a href="#高质量参考" class="headerlink" title="高质量参考:"></a>高质量参考:</h2><ul>
+<li><a href="">Unix 网络编程 - 第6章</a><ul>
+<li>权威参考,网上各种博客,大都摘抄自此.</li>
+</ul>
+</li>
+<li><a href="">Linux/Unix 系统编程手册-  第63章</a></li>
+<li><a href="http://blog.csdn.net/historyasamirror/article/details/5778378" target="_blank" rel="external">IO - 同步，异步，阻塞，非阻塞 （亡羊补牢篇）</a></li>
+<li><a href="https://segmentfault.com/a/1190000003063859" target="_blank" rel="external">Linux IO模式及 select、poll、epoll详解</a><ul>
+<li>写的比较通俗</li>
+</ul>
+</li>
+<li><a href="http://python.jobbole.com/86097/" target="_blank" rel="external">tornado源码解析之IOLoop</a></li>
+</ul>
+<h2 id="socket-编程几个核心概念"><a href="#socket-编程几个核心概念" class="headerlink" title="socket 编程几个核心概念:"></a>socket 编程几个核心概念:</h2><ul>
+<li>阻塞: blocking</li>
+<li>非阻塞: non-blocking</li>
+<li>同步: synchronous</li>
+<li>异步: asynchronous</li>
+</ul>
+<h2 id="IO模式"><a href="#IO模式" class="headerlink" title="IO模式:"></a>IO模式:</h2><ul>
+<li>IO 读两阶段:<ul>
+<li><ol>
+<li>等待数据准备 (Waiting for the data to be ready)</li>
+</ol>
+</li>
+<li><ol>
+<li>将数据从内核拷贝到进程中 (Copying the data from the kernel to the process)</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>由此产生的5种网络模式:<ul>
+<li>阻塞 I/O（blocking IO）</li>
+<li>非阻塞 I/O（nonblocking IO）</li>
+<li>I/O 多路复用（ IO multiplexing）</li>
+<li>信号驱动 I/O（ signal driven IO）: 不常用,略过.</li>
+<li>异步 I/O（asynchronous IO）</li>
+</ul>
+</li>
+</ul>
+<h2 id="核心总结"><a href="#核心总结" class="headerlink" title="核心总结:"></a>核心总结:</h2><ul>
+<li>阻塞 I/O（blocking IO）: IO 两阶段都阻塞</li>
+<li>非阻塞 I/O（nonblocking IO）: <ul>
+<li>命名不精确, 精确定义应为: 部分阻塞,部分非阻塞</li>
+</ul>
+</li>
+<li>I/O 多路复用（ IO multiplexing）: <ul>
+<li>常说的 select，poll，epoll，有些地方也称这种IO方式为event driven IO</li>
+<li>关于 select:<ul>
+<li>select 相当于一个<code>代理中介</code>, 进程在调用 select()函数时,被 block, </li>
+<li>而之后 select(poll, epoll 等)函数 会不断的轮询所负责的所有socket，当某个socket有数据到达了，就通知用户进程。</li>
+</ul>
+</li>
+<li>select/epoll的优势并不是对于单个连接能处理得更快，而是在于能处理更多的连接。</li>
+<li>如果处理的连接数不是很高的话，使用select/epoll的web server不一定比使用multi-threading + blocking IO的web server性能更好，可能延迟还更大。</li>
+</ul>
+</li>
+<li>异步 I/O（asynchronous IO）:<ul>
+<li>linux下的asynchronous IO其实用得很少</li>
+</ul>
+</li>
+</ul>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别:"></a>区别:</h2><ul>
+<li>同步 IO(synchronous IO):<ul>
+<li>blocking IO，non-blocking IO，IO multiplexing都属于synchronous IO。</li>
+<li>关于non-blocking IO:<ul>
+<li>non-blocking IO 在执行recvfrom这个system call的时候，如果kernel的数据没有准备好，这时候不会block进程。</li>
+<li>但是，当kernel中数据准备好的时候，recvfrom会将数据从kernel拷贝到用户内存中，这个时候进程是被block了，在这段时间内，进程是被block的。</li>
+</ul>
+</li>
+<li>同步: 都是阻塞的,只是阻塞的阶段不同(部分阻塞 vs 完全阻塞)</li>
+</ul>
+</li>
+<li>异步 IO (AIO):<ul>
+<li>当进程发起IO 操作之后，就直接返回再也不理睬了，直到kernel发送一个信号，告诉进程说IO完成。</li>
+<li>在这整个过程中，进程完全没有被block。</li>
+<li>异步: 才是真正的非阻塞</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本篇介绍 socket 编程最核心的概念区别.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tools" scheme="http://llinmeng.github.io/categories/Tools/"/>
+    
+    
+      <category term="socket" scheme="http://llinmeng.github.io/tags/socket/"/>
+    
+      <category term="select" scheme="http://llinmeng.github.io/tags/select/"/>
+    
+      <category term="epoll" scheme="http://llinmeng.github.io/tags/epoll/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SSH 使用 SSH-KEY 登录, 并禁用密码登录</title>
+    <link href="http://llinmeng.github.io/2016/08/22/ssh-use-key/"/>
+    <id>http://llinmeng.github.io/2016/08/22/ssh-use-key/</id>
+    <published>2016-08-22T14:55:32.000Z</published>
+    <updated>2016-11-26T08:03:18.791Z</updated>
+    
+    <content type="html"><![CDATA[<p>SSH 使用 SSH-KEY 登录, 并禁用密码登录的配置方法.</p>
+<a id="more"></a>
+<h2 id="0-更改-SSH-登录的背景"><a href="#0-更改-SSH-登录的背景" class="headerlink" title="0. 更改 SSH 登录的背景:"></a>0. 更改 SSH 登录的背景:</h2><ul>
+<li>最近查看阿里云主机的后台监控日志, 发现有被攻击, 查了下 log 详情.</li>
+<li>发现有人在对主机 SSH 登录端口22, 做暴力验证, 已经攻击了几天了, 瞬间吓尿有木有.</li>
+<li>赶紧把 SSH 登录的口令方式禁掉, 切到 密钥对方式登录.</li>
+<li>安全意识, 还是要提高, 懒癌要不得. 果断把其他几台主机, 都改了.</li>
+</ul>
+<h2 id="1-SSH-登录方式"><a href="#1-SSH-登录方式" class="headerlink" title="1. SSH 登录方式:"></a>1. SSH 登录方式:</h2><ul>
+<li>密码口令登录: 简单, 但是不安全, 公网主机,容易被攻击.</li>
+<li>SSH-KEY 登录: 需要设置</li>
+</ul>
+<h2 id="2-使用-SSH-KEY-登录配置原理"><a href="#2-使用-SSH-KEY-登录配置原理" class="headerlink" title="2. 使用 SSH-KEY 登录配置原理:"></a>2. 使用 SSH-KEY 登录配置原理:</h2><ol>
+<li>本机(Mac or winPC), 生成 SSH-KEY(公钥 id_rsa.pub 和私钥 id_rsa)</li>
+<li>远程主机(Ubuntu), 创建目录和文件: ~/.ssh/authorized_keys</li>
+<li>将本机(Mac or winPC)公钥 id_rsa.pub 内容拷贝并添加到 远程主机(Ubuntu)的 authorized_keys 文件中</li>
+<li>本机, 使用 SSH 登录工具(如 ZOC), 输入用户名, 勾选本机 SSH-KEY 私钥, 连接远程主机.</li>
+</ol>
+<h2 id="3-配置过程"><a href="#3-配置过程" class="headerlink" title="3. 配置过程:"></a>3. 配置过程:</h2><h3 id="3-1-Mac-本机生成-SSH-KEY"><a href="#3-1-Mac-本机生成-SSH-KEY" class="headerlink" title="3.1 Mac 本机生成 SSH-KEY:"></a>3.1 Mac 本机生成 SSH-KEY:</h3><ul>
+<li>略</li>
+<li>路径: ~/.ssh/</li>
+<li>私钥: ~/.ssh/id_rsa</li>
+<li>公钥: ~/.ssh/id_rsa.pub</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># ssh-keygen:生成秘钥对</span></div><div class="line"><span class="comment"># 其中：</span></div><div class="line"><span class="comment">#  -t指定算法</span></div><div class="line"><span class="comment">#  -f 指定生成秘钥路径</span></div><div class="line"><span class="comment">#  -N 指定密码</span></div><div class="line">ssh-keygen -t rsa </div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 本地公钥, 上传到远程主机:</span></div><div class="line">scp ~/.ssh/id_rsa.pub root@192.168.1.3:~/.ssh/</div></pre></td></tr></table></figure>
+<h3 id="3-2-远程主机创建-ssh-目录"><a href="#3-2-远程主机创建-ssh-目录" class="headerlink" title="3.2 远程主机创建.ssh 目录"></a>3.2 远程主机创建.ssh 目录</h3><ul>
+<li>文件和目录的权限千万别设置成chmod 777.这个权限太大了，不安全，数字签名也不支持</li>
+<li>本机生成的rsa/dsa签名的公钥, 是给远程主机使用的. 公钥内容, 要拷贝到远程主机的.ssh/authorized_keys中</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># 创建目录:</span></div><div class="line"><span class="built_in">cd</span> ~</div><div class="line">mkdir .ssh</div><div class="line">chmod 700 .ssh</div><div class="line"></div><div class="line"><span class="comment"># 创建文件:</span></div><div class="line"><span class="built_in">cd</span> .ssh</div><div class="line">touch authorized_keys</div><div class="line">chmod 600 authorized_keys</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 写入公钥内容:</span></div><div class="line"><span class="built_in">echo</span> <span class="string">'ssh-rsa public '</span> &gt;&gt; ~/.ssh/authorized_keys</div><div class="line"></div><div class="line"><span class="comment"># 写入方法2:(该公钥,是有本地主机, 上传到远程主机上的)</span></div><div class="line">cat ~/.ssh/id_dsa.pub &gt;&gt; ~/.ssh/authorized_keys</div></pre></td></tr></table></figure>
+<h3 id="3-3-本机SSH-连接远程主机"><a href="#3-3-本机SSH-连接远程主机" class="headerlink" title="3.3 本机SSH 连接远程主机:"></a>3.3 本机SSH 连接远程主机:</h3><ul>
+<li>ZOC 连接,设置步骤略.</li>
+<li>尝试连接, 若成功.则进行下一步,禁用密码登录方式.</li>
+</ul>
+<h3 id="3-4-禁用-SSH-的密码登录方式"><a href="#3-4-禁用-SSH-的密码登录方式" class="headerlink" title="3.4 禁用 SSH 的密码登录方式:"></a>3.4 禁用 SSH 的密码登录方式:</h3><ul>
+<li>修改: vim /etc/ssh/sshd_config</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">#禁用密码验证</span></div><div class="line">PasswordAuthentication no</div><div class="line"></div><div class="line"><span class="comment">#启用密钥验证</span></div><div class="line">RSAAuthentication yes</div><div class="line">PubkeyAuthentication yes</div><div class="line"></div><div class="line"><span class="comment">#指定公钥数据库文件</span></div><div class="line">AuthorsizedKeysFile .ssh/authorized_keys</div></pre></td></tr></table></figure>
+<ul>
+<li>重启 SSH 服务, 重新使用  SSH 口令方式登录远程主机, 验证是否已成功禁用</li>
+<li>若提示: [SSH] FAIL: Permission denied (publickey). 则表明禁用成功.</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">#RHEL/CentOS系统</span></div><div class="line">service sshd restart</div><div class="line"></div><div class="line"><span class="comment">#ubuntu系统</span></div><div class="line">service ssh restart</div><div class="line"></div><div class="line"><span class="comment">#debian系统</span></div><div class="line">/etc/init.d/ssh restart</div></pre></td></tr></table></figure>
+<h2 id="4-参考"><a href="#4-参考" class="headerlink" title="4. 参考:"></a>4. 参考:</h2><ul>
+<li><a href="https://linux.cn/article-5776-1.html" target="_blank" rel="external">SSH 使用密钥登录并禁止口令登录实践</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;SSH 使用 SSH-KEY 登录, 并禁用密码登录的配置方法.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tools" scheme="http://llinmeng.github.io/categories/Tools/"/>
+    
+    
+      <category term="SSH" scheme="http://llinmeng.github.io/tags/SSH/"/>
+    
+      <category term="Ubuntu" scheme="http://llinmeng.github.io/tags/Ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MongoDB 开发笔记</title>
+    <link href="http://llinmeng.github.io/2016/06/25/mongodb-replica-set-config/"/>
+    <id>http://llinmeng.github.io/2016/06/25/mongodb-replica-set-config/</id>
+    <published>2016-06-25T22:12:10.000Z</published>
+    <updated>2016-11-26T08:03:18.791Z</updated>
+    
+    <content type="html"><![CDATA[<p>本篇介绍MongoDB 高可用配置和一些重要特性.</p>
+<a id="more"></a>
+<h2 id="MongoDB-高可用配置"><a href="#MongoDB-高可用配置" class="headerlink" title="MongoDB 高可用配置"></a>MongoDB 高可用配置</h2><ul>
+<li>使用pymongo</li>
+</ul>
+<p>参考文档:</p>
+<p>官方文档,必看, 看完,就可以配置.</p>
+<ul>
+<li><a href="https://api.mongodb.org/python/current/examples/high_availability.html" target="_blank" rel="external">High Availability and PyMongo</a></li>
+</ul>
+<ul>
+<li><a href="https://api.mongodb.org/python/current/api/pymongo/mongo_client.html" target="_blank" rel="external">MongoClient</a></li>
+</ul>
+<p>下面这个API可能要废弃, 因为MongoClient 已经包含 MongoReplicaSetClient() 全部功能</p>
+<ul>
+<li><a href="https://api.mongodb.org/python/current/api/pymongo/mongo_replica_set_client.html" target="_blank" rel="external">mongo_replica_set_client</a></li>
+</ul>
+<h2 id="两阶段提交2PC"><a href="#两阶段提交2PC" class="headerlink" title="两阶段提交2PC"></a>两阶段提交2PC</h2><p>四、缺陷<br>算法执行过程中，所有节点都处于阻塞状态，所有节点所持有的资源（例如数据库数据，本地文件等）都处于封锁状态。</p>
+<p>六、结论<br>2PC效率很低，分布式事务很难做。</p>
+<p><a href="http://chuansong.me/n/1928604" target="_blank" rel="external">http://chuansong.me/n/1928604</a></p>
+<h2 id="pool"><a href="#pool" class="headerlink" title="pool"></a>pool</h2><ul>
+<li><a href="http://api.mongodb.org/python/current/faq.html#how-does-connection-pooling-work-in-pymongo" target="_blank" rel="external">How does connection pooling work in PyMongo?</a></li>
+</ul>
+<h2 id="mongodb-不支持-事务-解决"><a href="#mongodb-不支持-事务-解决" class="headerlink" title="mongodb 不支持 事务, 解决:"></a>mongodb 不支持 事务, 解决:</h2><ul>
+<li><a href="http://www.uml.org.cn/sjjm/2014081111.asp?artid=10313" target="_blank" rel="external">五个解决方案让MongoDB拥有RDBMS的鲁棒性事务</a></li>
+</ul>
+<ul>
+<li><a href="https://coding.net/u/tuxpy/p/tmongo/git/blob/master/tmongo.py" target="_blank" rel="external">实现事务支持: 源码 - py</a></li>
+</ul>
+<ul>
+<li><a href="http://www.tuicool.com/articles/f6ZBjm" target="_blank" rel="external">MongoDB两阶段提交实现事务</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本篇介绍MongoDB 高可用配置和一些重要特性.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="DB" scheme="http://llinmeng.github.io/categories/DB/"/>
+    
+    
+      <category term="mongodb" scheme="http://llinmeng.github.io/tags/mongodb/"/>
+    
+      <category term="NoSQL" scheme="http://llinmeng.github.io/tags/NoSQL/"/>
+    
+      <category term="高可用" scheme="http://llinmeng.github.io/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac搭建Docker开发环境</title>
+    <link href="http://llinmeng.github.io/2015/08/06/docker-mac-osx-dev-env-build/"/>
+    <id>http://llinmeng.github.io/2015/08/06/docker-mac-osx-dev-env-build/</id>
+    <published>2015-08-06T16:12:10.000Z</published>
+    <updated>2016-11-26T08:03:18.791Z</updated>
+    
+    <content type="html"><![CDATA[<p>记录Mac搭建Docker开发环境过程.</p>
+<a id="more"></a>
+<h2 id="Docker简介"><a href="#Docker简介" class="headerlink" title="Docker简介"></a>Docker简介</h2><h2 id="Mac搭建Docker环境"><a href="#Mac搭建Docker环境" class="headerlink" title="Mac搭建Docker环境"></a>Mac搭建Docker环境</h2><ul>
+<li>之前不太想在Mac上部署Docker,后来发现实在影响开发效率.索性还是配置一下吧.</li>
+<li>Mac配置Docker开发环境,需要安装Boot2Docker.详细步骤如下.</li>
+<li><a href="https://docs.docker.com/installation/mac/" target="_blank" rel="external">参考:官方文档</a></li>
+</ul>
+<h3 id="1-下载-Boot2Docker-安装包"><a href="#1-下载-Boot2Docker-安装包" class="headerlink" title="1. 下载 Boot2Docker 安装包"></a>1. 下载 Boot2Docker 安装包</h3><ul>
+<li><a href="http://get.daocloud.io/#install-boot2docker" target="_blank" rel="external">下载地址</a></li>
+<li>下载 Boot2Docker-1.7.1.pkg 并安装.</li>
+<li>安装完成,会在Launchpad里添加Boot2Docker图标.</li>
+</ul>
+<h3 id="2-初始化"><a href="#2-初始化" class="headerlink" title="2. 初始化."></a>2. 初始化.</h3><ul>
+<li>第一次,在Launchpad中,打开Boot2Docker软件,会自动打开终端,显示如下信息.</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line">bash</div><div class="line">Last login: Thu Aug  6 16:47:00 on ttys012</div><div class="line"><span class="built_in">unset</span> DYLD_LIBRARY_PATH ; <span class="built_in">unset</span> LD_LIBRARY_PATH</div><div class="line">mkdir -p ~/.boot2docker</div><div class="line"><span class="keyword">if</span> [ ! <span class="_">-f</span> ~/.boot2docker/boot2docker.iso ]; <span class="keyword">then</span> cp /usr/<span class="built_in">local</span>/share/boot2docker/boot2docker.iso ~/.boot2docker/ ; <span class="keyword">fi</span></div><div class="line">/usr/<span class="built_in">local</span>/bin/boot2docker init</div><div class="line">/usr/<span class="built_in">local</span>/bin/boot2docker up</div><div class="line">$(/usr/<span class="built_in">local</span>/bin/boot2docker shellinit)</div><div class="line">docker version</div><div class="line">hhstore@hhstore-rMBP15.local:/Users/hhstore  $ bash</div><div class="line">bash-3.2$ <span class="built_in">unset</span> DYLD_LIBRARY_PATH ; <span class="built_in">unset</span> LD_LIBRARY_PATH</div><div class="line">bash-3.2$ mkdir -p ~/.boot2docker</div><div class="line">bash-3.2$ <span class="keyword">if</span> [ ! <span class="_">-f</span> ~/.boot2docker/boot2docker.iso ]; <span class="keyword">then</span> cp /usr/<span class="built_in">local</span>/share/boot2docker/boot2docker.iso ~/.boot2docker/ ; <span class="keyword">fi</span></div><div class="line">bash-3.2$ /usr/<span class="built_in">local</span>/bin/boot2docker init</div><div class="line">Generating public/private rsa key pair.</div><div class="line">Your identification has been saved <span class="keyword">in</span> /Users/hhstore/.ssh/id_boot2docker.</div><div class="line">Your public key has been saved <span class="keyword">in</span> /Users/hhstore/.ssh/id_boot2docker.pub.</div><div class="line">The key fingerprint is:</div><div class="line">43:0d:3c:7a:02:dc:6c:2a:21:02:26:81:f0:f7:ae:61 hhstore@hhstore-rMBP15.local</div><div class="line">The key<span class="string">'s randomart image is:</span></div><div class="line">+--[ RSA 2048]----+</div><div class="line">|Oo . o ..        |</div><div class="line">|*.. o + oo       |</div><div class="line">|.....+ ....      |</div><div class="line">|  ....o..        |</div><div class="line">|   .  .oS        |</div><div class="line">|     .   .       |</div><div class="line">|    E .          |</div><div class="line">|   . o           |</div><div class="line">|    .            |</div><div class="line">+-----------------+</div><div class="line">Initialization of virtual machine "boot2docker-vm" complete.</div><div class="line">Use `boot2docker up` to start it.</div><div class="line">bash-3.2$ /usr/local/bin/boot2docker up</div><div class="line">$(/usr/local/bin/boot2docker shellinit)</div><div class="line">docker version</div><div class="line"></div><div class="line">Waiting for VM and Docker daemon to start...</div><div class="line">........................oooooooooooooooo</div><div class="line">Started.</div><div class="line">Writing /Users/hhstore/.boot2docker/certs/boot2docker-vm/ca.pem</div><div class="line">Writing /Users/hhstore/.boot2docker/certs/boot2docker-vm/cert.pem</div><div class="line">Writing /Users/hhstore/.boot2docker/certs/boot2docker-vm/key.pem</div><div class="line"></div><div class="line">To connect the Docker client to the Docker daemon, please set:</div><div class="line">    export DOCKER_CERT_PATH=/Users/hhstore/.boot2docker/certs/boot2docker-vm</div><div class="line">    export DOCKER_TLS_VERIFY=1</div><div class="line">    export DOCKER_HOST=tcp://192.168.59.103:2376</div><div class="line"></div><div class="line">Or run: `eval "$(boot2docker shellinit)"`</div><div class="line"></div><div class="line">bash-3.2$ $(/usr/local/bin/boot2docker shellinit)</div><div class="line">Writing /Users/hhstore/.boot2docker/certs/boot2docker-vm/ca.pem</div><div class="line">Writing /Users/hhstore/.boot2docker/certs/boot2docker-vm/cert.pem</div><div class="line">Writing /Users/hhstore/.boot2docker/certs/boot2docker-vm/key.pem</div><div class="line">bash-3.2$ docker version</div><div class="line">Client version: 1.7.1</div><div class="line">Client API version: 1.19</div><div class="line">Go version (client): go1.4.2</div><div class="line">Git commit (client): 786b29d</div><div class="line">OS/Arch (client): darwin/amd64</div><div class="line">Server version: 1.7.1</div><div class="line">Server API version: 1.19</div><div class="line">Go version (server): go1.4.2</div><div class="line">Git commit (server): 786b29d</div><div class="line">OS/Arch (server): linux/amd64</div><div class="line">bash-3.2$</div><div class="line">bash-3.2$</div></pre></td></tr></table></figure>
+<h3 id="3-配置Docker加速器-Docker-1-3-2版本以上支持加速器"><a href="#3-配置Docker加速器-Docker-1-3-2版本以上支持加速器" class="headerlink" title="3. 配置Docker加速器(Docker 1.3.2版本以上支持加速器)"></a>3. 配置Docker加速器(Docker 1.3.2版本以上支持加速器)</h3><ul>
+<li><a href="https://dashboard.daocloud.io/mirror" target="_blank" rel="external">参考:加速器</a></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">echo &quot;DOCKER_OPTS=\&quot;\$DOCKER_OPTS --registry-mirror=http://e73f9bcf.m.daocloud.io\&quot;&quot; | sudo tee -a /etc/default/docker</div><div class="line">sudo service docker restart</div></pre></td></tr></table></figure>
+<h3 id="4-下载image-测试正常"><a href="#4-下载image-测试正常" class="headerlink" title="4. 下载image,测试正常."></a>4. 下载image,测试正常.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 无需再添加 mirror源地址.正常执行时,会开始下载image.耐心等待.</span></div><div class="line">sudo docker pull ubuntu:14.04  </div><div class="line">docker pull hello-world</div></pre></td></tr></table></figure>
+<ul>
+<li>完整提示信息:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">bash-3.2$ docker pull ubuntu:14.04</div><div class="line">14.04: Pulling from ubuntu</div><div class="line">2eaf0096818b: Pull complete</div><div class="line">dac7bccb8ac3: Pull complete</div><div class="line">389028aa9e91: Pull complete</div><div class="line">63e3c10217b8: Already exists</div><div class="line">ubuntu:14.04: The image you are pulling has been verified. Important: image verification is a tech preview feature and should not be relied on to provide security.</div><div class="line">Digest: sha256:44beefbcad1eb02996bf8eca28817cce4acfb16abf3736bf7040cb34244bf56f</div><div class="line">Status: Downloaded newer image <span class="keyword">for</span> ubuntu:14.04</div></pre></td></tr></table></figure>
+<h3 id="5-查看已经下载的image"><a href="#5-查看已经下载的image" class="headerlink" title="5. 查看已经下载的image"></a>5. 查看已经下载的image</h3><ul>
+<li>启动Docker服务.</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">boot2docker init   <span class="comment"># 初始化.</span></div><div class="line">boot2docker up     <span class="comment"># 启动.第一次,可能弹出如下报错提示,后提供解决办法.</span></div></pre></td></tr></table></figure>
+<ul>
+<li>第一次执行上述命令,弹出如下报错信息:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">$ boot2docker up</div><div class="line">Waiting <span class="keyword">for</span> VM and Docker daemon to start...</div><div class="line">.o</div><div class="line">Started.</div><div class="line">Writing /Users/hhstore/.boot2docker/certs/boot2docker-vm/ca.pem</div><div class="line">Writing /Users/hhstore/.boot2docker/certs/boot2docker-vm/cert.pem</div><div class="line">Writing /Users/hhstore/.boot2docker/certs/boot2docker-vm/key.pem</div><div class="line"></div><div class="line">To connect the Docker client to the Docker daemon, please <span class="built_in">set</span>:</div><div class="line">    <span class="built_in">export</span> DOCKER_HOST=tcp://192.168.59.103:2376</div><div class="line">    <span class="built_in">export</span> DOCKER_CERT_PATH=/Users/hhstore/.boot2docker/certs/boot2docker-vm</div><div class="line">    <span class="built_in">export</span> DOCKER_TLS_VERIFY=1</div><div class="line"></div><div class="line">Or run: `<span class="built_in">eval</span> <span class="string">"<span class="variable">$(boot2docker shellinit)</span>"</span>`</div></pre></td></tr></table></figure>
+<ul>
+<li>根据报错提示,最后一句要求执行:$(boot2docker shellinit)命令:</li>
+<li>执行该命令,只是当次有效,下次关闭终端,需要重新设置.</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 注意,含$符号.</span></div><div class="line">$(boot2docker shellinit)</div></pre></td></tr></table></figure>
+<ul>
+<li>查看已安装的image.</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">docker images</div><div class="line"></div><div class="line"><span class="comment"># 当前返回结果如下:</span></div><div class="line">$ docker images</div><div class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE</div><div class="line">ubuntu              14.04               63e3c10217b8        41 hours ago        188.4 MB</div><div class="line">hello-world         latest              91c95931e552        3 months ago        910 B</div></pre></td></tr></table></figure>
+<ul>
+<li>使用Docker-image.</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 输入如下命令,正常输出提示信息:</span></div><div class="line">$ docker run hello-world</div><div class="line"></div><div class="line">Hello from Docker.</div><div class="line">This message shows that your installation appears to be working correctly.</div><div class="line"></div><div class="line">To generate this message, Docker took the following steps:</div><div class="line"> 1. The Docker client contacted the Docker daemon.</div><div class="line"> 2. The Docker daemon pulled the <span class="string">"hello-world"</span> image from the Docker Hub.</div><div class="line">    (Assuming it was not already locally available.)</div><div class="line"> 3. The Docker daemon created a new container from that image <span class="built_in">which</span> runs the</div><div class="line">    executable that produces the output you are currently reading.</div><div class="line"> 4. The Docker daemon streamed that output to the Docker client, <span class="built_in">which</span> sent it</div><div class="line">    to your terminal.</div><div class="line"></div><div class="line">To try something more ambitious, you can run an Ubuntu container with:</div><div class="line"> $ docker run -it ubuntu bash</div><div class="line"></div><div class="line">For more examples and ideas, visit:</div><div class="line"> http://docs.docker.com/userguide/</div></pre></td></tr></table></figure>
+<h3 id="2-配置-Boot2Docker"><a href="#2-配置-Boot2Docker" class="headerlink" title="2. 配置 Boot2Docker"></a>2. 配置 Boot2Docker</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir ~/.boot2docker</div><div class="line"><span class="built_in">echo</span> ISOURL = \<span class="string">"https://get.daocloud.io/boot2docker/boot2docker-lastest.iso\" &gt; ~/.boot2docker/profile</span></div></pre></td></tr></table></figure>
+<h3 id="3-初始化并启动虚拟机"><a href="#3-初始化并启动虚拟机" class="headerlink" title="3. 初始化并启动虚拟机"></a>3. 初始化并启动虚拟机</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">boot2docker init</div><div class="line">boot2docker up</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;记录Mac搭建Docker开发环境过程.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tools" scheme="http://llinmeng.github.io/categories/Tools/"/>
+    
+    
+      <category term="Mac" scheme="http://llinmeng.github.io/tags/Mac/"/>
+    
+      <category term="Docker" scheme="http://llinmeng.github.io/tags/Docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Windows-SSH远程登录软件对比</title>
+    <link href="http://llinmeng.github.io/2015/08/05/windows-ssh-tools-diff/"/>
+    <id>http://llinmeng.github.io/2015/08/05/windows-ssh-tools-diff/</id>
+    <published>2015-08-05T22:12:10.000Z</published>
+    <updated>2016-11-26T08:03:18.791Z</updated>
+    
+    <content type="html"><![CDATA[<p>本篇介绍windows下的SSH远程登录软件.</p>
+<a id="more"></a>
+<h2 id="1-SSH登录软件"><a href="#1-SSH登录软件" class="headerlink" title="1. SSH登录软件"></a>1. SSH登录软件</h2><p>经常需要在windows下,远程连接 虚拟机里的(ubuntu),或者阿里云的云主机(Linux系统).<br>把主流SSH软件都测试一遍,效果对比如下.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">软件</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">特点</th>
+<th style="text-align:left">推荐度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Putty</td>
+<td style="text-align:left">商业</td>
+<td style="text-align:left">太简陋,而且网上各种破解版有病毒,慎用.</td>
+<td style="text-align:left">1星</td>
+</tr>
+<tr>
+<td style="text-align:left">WinSCP</td>
+<td style="text-align:left">免费</td>
+<td style="text-align:left">搭配Putty使用,自带功能太弱.</td>
+<td style="text-align:left">1星</td>
+</tr>
+<tr>
+<td style="text-align:left">Xshell</td>
+<td style="text-align:left">开源</td>
+<td style="text-align:left">在某些配置vim下,会出现光标定位不准确的问题.极难使用</td>
+<td style="text-align:left">2星</td>
+</tr>
+<tr>
+<td style="text-align:left">SecureCRT</td>
+<td style="text-align:left">商业</td>
+<td style="text-align:left">功能蛮强大,只是配色太丑.</td>
+<td style="text-align:left">3星</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://mobaxterm.mobatek.net/download.html" target="_blank" rel="external">MobaXterm</a></td>
+<td style="text-align:left">个人版免费</td>
+<td style="text-align:left">功能强大,各种酷炫的功能,下面详细介绍</td>
+<td style="text-align:left">5星推荐</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://www.bitvise.com/download-area#" target="_blank" rel="external">Bitvise</a></td>
+<td style="text-align:left">个人版免费</td>
+<td style="text-align:left">带FTP功能</td>
+<td style="text-align:left">4星推荐</td>
+</tr>
+<tr>
+<td style="text-align:left">Cygwin</td>
+<td style="text-align:left">–</td>
+<td style="text-align:left">知乎讨论,有些人用,有点像bitvise的窗口风格</td>
+<td style="text-align:left">3星</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-初步筛选MobaXterm和MobaXterm值得推荐"><a href="#2-初步筛选MobaXterm和MobaXterm值得推荐" class="headerlink" title="2. 初步筛选MobaXterm和MobaXterm值得推荐."></a>2. 初步筛选MobaXterm和MobaXterm值得推荐.</h2><ul>
+<li>MobaXterm: 非常推荐,测试效果非常满意.</li>
+<li>Bitvise: 自带FTP功能,非常实用,除了终端窗口是windows默认风格,不太满意.其他都挺好.</li>
+</ul>
+<h2 id="3-重点介绍MobaXterm"><a href="#3-重点介绍MobaXterm" class="headerlink" title="3. 重点介绍MobaXterm"></a>3. 重点介绍MobaXterm</h2><h3 id="说明"><a href="#说明" class="headerlink" title="说明:"></a>说明:</h3><p>通过MobaXterm进行远程终端链接，你可以创建 SSH, Telnet, Rlogin, RDP, VNC, XDMCP, FTP, SFTP or 串口等链接。你的每次链接都会自动保存并且出现在左侧链接窗口中。</p>
+<h3 id="亮点"><a href="#亮点" class="headerlink" title="亮点:"></a>亮点:</h3><ul>
+<li>自动保存SSH账号,密码.</li>
+<li>可以打开N个登陆窗口.</li>
+<li>窗口高亮,代码高亮.UI配色漂亮.</li>
+<li>自带SFTP服务,甚至可以跟踪命令窗口,随时切换显示当前目录下文件列表.支持拖放上传文件.</li>
+<li>分屏显示,方便管理多台服务器，并且你可以仅输入一次，让一条命令同时在这些不同的服务器终端执行</li>
+<li>内置文本编辑器,可以打开 远程主机的 文件,进行编辑,修改,保存.强大到不能忍.</li>
+<li>通过 RDP 协议,远程链接,并控制你的windows电脑.(类似QQ远程连接,方便)</li>
+<li>在Windows 电脑上，通过XDMCP协议，远程控制Solaris 桌面系统。</li>
+<li>有很多免费的插件</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结:"></a>总结:</h3><p>说了这么多,强力推荐这个软件.非常非常好用.</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://linux.cn/article-5468-1.html" target="_blank" rel="external">Windows 下的免费 SSH 客户端工具</a></li>
+<li><a href="http://jingxuan.io/?p=182" target="_blank" rel="external">全能型开源远程终端MobaXterm</a></li>
+<li><a href="http://www.xdowns.com/soft/6/99/2012/Soft_84973.html" target="_blank" rel="external">MobaXterm下载</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本篇介绍windows下的SSH远程登录软件.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tools" scheme="http://llinmeng.github.io/categories/Tools/"/>
+    
+    
+      <category term="SSH" scheme="http://llinmeng.github.io/tags/SSH/"/>
+    
+      <category term="Windows" scheme="http://llinmeng.github.io/tags/Windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MongoDB学习笔记</title>
+    <link href="http://llinmeng.github.io/2015/06/27/mongodb-notes/"/>
+    <id>http://llinmeng.github.io/2015/06/27/mongodb-notes/</id>
+    <published>2015-06-27T22:03:41.000Z</published>
+    <updated>2016-11-26T08:03:18.791Z</updated>
+    
+    <content type="html"><![CDATA[<p>本篇介绍MongoDB学习笔记,会持续更新.</p>
+<a id="more"></a>
+<ul>
+<li>MongoDB是一种文件导向数据库管理系统，由C++撰写而成，以此来解决应用程序开发社区中的大量现实问题。</li>
+<li>MongoDB可以从开放源代码来建构与安装，更常见的是安装binary文件，目前有Windows, Linux, OS X和Solaris版本。</li>
+<li>官方驱动: <a href="https://github.com/mongodb/mongo-python-driver" target="_blank" rel="external">PyMongo</a> </li>
+<li>官方文档,写的非常好.详细全面.不需要再查二手资料.</li>
+</ul>
+<h1 id="第一部分-安装运行MongoDB"><a href="#第一部分-安装运行MongoDB" class="headerlink" title="第一部分 安装运行MongoDB"></a>第一部分 安装运行MongoDB</h1><h2 id="1-安装-Mac-OS-X"><a href="#1-安装-Mac-OS-X" class="headerlink" title="1.安装(Mac OS X)"></a>1.安装(Mac OS X)</h2><ul>
+<li><a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/" target="_blank" rel="external">官方文档: Mac OS X安装</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">方式1: homebrew方式</div><div class="line">brew update</div><div class="line">brew install mongodb</div><div class="line">brew install mongodb --with-openssl   <span class="comment"># 安装TLS/SSL支持</span></div><div class="line">brew install mongodb --devel          <span class="comment"># 安装最新开发版</span></div><div class="line"></div><div class="line">方式2: 安装2进制包</div><div class="line">curl -O https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.0.4.tgz</div><div class="line">tar -zxvf mongodb-osx-x86_64-3.0.4.tgz</div><div class="line">mkdir -p mongodb</div><div class="line">cp -R -n mongodb-osx-x86_64-3.0.4/ mongodb</div><div class="line"><span class="built_in">export</span> PATH=&lt;mongodb-install-directory&gt;/bin:<span class="variable">$PATH</span></div></pre></td></tr></table></figure>
+<h2 id="2-运行"><a href="#2-运行" class="headerlink" title="2.运行"></a>2.运行</h2><h3 id="1-创建数据库路径"><a href="#1-创建数据库路径" class="headerlink" title="1.创建数据库路径."></a>1.创建数据库路径.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir -p /data/db  <span class="comment"># 默认mongod进程使用 /data/db 作默认路径</span></div></pre></td></tr></table></figure>
+<h3 id="2-设置权限-允许mongod访问该路径"><a href="#2-设置权限-允许mongod访问该路径" class="headerlink" title="2.设置权限,允许mongod访问该路径."></a>2.设置权限,允许mongod访问该路径.</h3><ul>
+<li>在运行mongod之前,确保用户对该数据库路径有读写权限.</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /</div><div class="line">sudo chmod 755 /data/</div></pre></td></tr></table></figure>
+<h3 id="3-运行MongoDB"><a href="#3-运行MongoDB" class="headerlink" title="3.运行MongoDB"></a>3.运行MongoDB</h3><h4 id="1-执行"><a href="#1-执行" class="headerlink" title="1) 执行"></a>1) 执行</h4><ul>
+<li>若已添加至系统环境变量PATH中,运行如下命令:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo mongod <span class="comment"># 默认MongoDB存储路径</span></div><div class="line">sudo mongod --dbpath &lt;path to data directory&gt;  <span class="comment"># 指定自定义路径</span></div></pre></td></tr></table></figure>
+<ul>
+<li>若未添加至系统环境变量PATH,需要执行:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo &lt;path to binary&gt;/mongod  <span class="comment"># 完整的MongoDB安装路径</span></div></pre></td></tr></table></figure>
+<h4 id="2-正常运行-显示提示信息"><a href="#2-正常运行-显示提示信息" class="headerlink" title="2) 正常运行,显示提示信息:"></a>2) 正常运行,显示提示信息:</h4><ul>
+<li>含端口号等信息</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">2015-06-19T11:17:00.463+0800 I JOURNAL  [initandlisten] journal dir=/data/db/journal</div><div class="line">2015-06-19T11:17:00.464+0800 I JOURNAL  [initandlisten] recover : no journal files present, no recovery needed</div><div class="line">2015-06-19T11:17:00.480+0800 I JOURNAL  [durability] Durability thread started</div><div class="line">2015-06-19T11:17:00.480+0800 I JOURNAL  [journal writer] Journal writer thread started</div><div class="line">2015-06-19T11:17:00.480+0800 I CONTROL  [initandlisten] MongoDB starting : pid=918 port=27017 dbpath=/data/db 64-bit host=hhstore-rMBP15.local</div><div class="line">2015-06-19T11:17:00.480+0800 I CONTROL  [initandlisten] ** WARNING: You are running this process as the root user, <span class="built_in">which</span> is not recommended.</div><div class="line">2015-06-19T11:17:00.480+0800 I CONTROL  [initandlisten]</div><div class="line">2015-06-19T11:17:00.480+0800 I CONTROL  [initandlisten]</div><div class="line">2015-06-19T11:17:00.480+0800 I CONTROL  [initandlisten] ** WARNING: soft rlimits too low. Number of files is 256, should be at least 1000</div><div class="line">2015-06-19T11:17:00.480+0800 I CONTROL  [initandlisten] db version v3.0.3</div><div class="line">2015-06-19T11:17:00.480+0800 I CONTROL  [initandlisten] git version: nogitversion</div><div class="line">2015-06-19T11:17:00.481+0800 I CONTROL  [initandlisten] build info: Darwin yosemitevm.local 14.3.0 Darwin Kernel Version 14.3.0: Mon Mar 23 11:59:05 PDT 2015; root:xnu-2782.20.48~5/RELEASE_X86_64 x86_64 BOOST_LIB_VERSION=1_49</div><div class="line">2015-06-19T11:17:00.481+0800 I CONTROL  [initandlisten] allocator: system</div><div class="line">2015-06-19T11:17:00.481+0800 I CONTROL  [initandlisten] options: &#123;&#125;</div><div class="line">2015-06-19T11:17:00.661+0800 I NETWORK  [initandlisten] waiting <span class="keyword">for</span> connections on port 27017</div></pre></td></tr></table></figure>
+<h3 id="4-结束运行"><a href="#4-结束运行" class="headerlink" title="4.结束运行."></a>4.结束运行.</h3><ul>
+<li>部署生成环境 <a href="http://docs.mongodb.org/manual/administration/production-notes/" target="_blank" rel="external">参考</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">终端输入快捷键:</div><div class="line">Control+C, 结束运行.</div></pre></td></tr></table></figure>
+<h1 id="第二部分-CRUD-增删改查"><a href="#第二部分-CRUD-增删改查" class="headerlink" title="第二部分 CRUD(增删改查)"></a>第二部分 CRUD(增删改查)</h1><ul>
+<li><a href="http://docs.mongodb.org/manual/core/crud-introduction/" target="_blank" rel="external">参考</a></li>
+<li><a href="http://docs.mongodb.org/getting-started/python/" target="_blank" rel="external">python版参考</a></li>
+</ul>
+<h2 id="1-导入数据"><a href="#1-导入数据" class="headerlink" title="1.导入数据"></a>1.导入数据</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongoimport --db <span class="built_in">test</span> --collection restaurants --drop --file primer-dataset.json</div></pre></td></tr></table></figure>
+<h2 id="2-安装python版本的驱动-PyMongo"><a href="#2-安装python版本的驱动-PyMongo" class="headerlink" title="2.安装python版本的驱动(PyMongo)"></a>2.安装python版本的驱动(PyMongo)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pip install pymongo</div></pre></td></tr></table></figure>
+<h2 id="3-python示例"><a href="#3-python示例" class="headerlink" title="3.python示例"></a>3.python示例</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient  <span class="comment"># 导包</span></div><div class="line"></div><div class="line">client = MongoClient()          <span class="comment"># 创建连接</span></div><div class="line">client = MongoClient(<span class="string">"mongodb://mongodb0.example.net:27019"</span>)  <span class="comment"># 带 MongoDB URI参数</span></div><div class="line"></div><div class="line">db = client.primer</div><div class="line">db = client[<span class="string">'primer'</span>]</div><div class="line"></div><div class="line"></div><div class="line">db.dataset</div><div class="line">db[<span class="string">'dataset'</span>]</div><div class="line"></div><div class="line">coll = db.dataset</div><div class="line">coll = db[<span class="string">'dataset'</span>]</div></pre></td></tr></table></figure>
+<h2 id="4-Insert-插入数据"><a href="#4-Insert-插入数据" class="headerlink" title="4.Insert 插入数据"></a>4.Insert 插入数据</h2><ul>
+<li><a href="http://docs.mongodb.org/getting-started/python/insert/" target="_blank" rel="external">参考</a></li>
+</ul>
+<ul>
+<li>连接测试数据库</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</div><div class="line"></div><div class="line">client = MongoClient()</div><div class="line">db = client.test</div></pre></td></tr></table></figure>
+<ul>
+<li>插入一个文档数据</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</div><div class="line">result = db.restaurants.insert_one(</div><div class="line">    &#123;</div><div class="line">        <span class="string">"address"</span>: &#123;</div><div class="line">            <span class="string">"street"</span>: <span class="string">"2 Avenue"</span>,</div><div class="line">            <span class="string">"zipcode"</span>: <span class="string">"10075"</span>,</div><div class="line">            <span class="string">"building"</span>: <span class="string">"1480"</span>,</div><div class="line">            <span class="string">"coord"</span>: [<span class="number">-73.9557413</span>, <span class="number">40.7720266</span>]</div><div class="line">        &#125;,</div><div class="line">        <span class="string">"borough"</span>: <span class="string">"Manhattan"</span>,</div><div class="line">        <span class="string">"cuisine"</span>: <span class="string">"Italian"</span>,</div><div class="line">        <span class="string">"grades"</span>: [</div><div class="line">            &#123;</div><div class="line">                <span class="string">"date"</span>: datetime.strptime(<span class="string">"2014-10-01"</span>, <span class="string">"%Y-%m-%d"</span>),</div><div class="line">                <span class="string">"grade"</span>: <span class="string">"A"</span>,</div><div class="line">                <span class="string">"score"</span>: <span class="number">11</span></div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                <span class="string">"date"</span>: datetime.strptime(<span class="string">"2014-01-16"</span>, <span class="string">"%Y-%m-%d"</span>),</div><div class="line">                <span class="string">"grade"</span>: <span class="string">"B"</span>,</div><div class="line">                <span class="string">"score"</span>: <span class="number">17</span></div><div class="line">            &#125;</div><div class="line">        ],</div><div class="line">        <span class="string">"name"</span>: <span class="string">"Vella"</span>,</div><div class="line">        <span class="string">"restaurant_id"</span>: <span class="string">"41704620"</span></div><div class="line">    &#125;</div><div class="line">)</div></pre></td></tr></table></figure>
+<ul>
+<li>属性</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">result.inserted_id</div><div class="line">ObjectId(<span class="string">"54c1478ec2341ddf130f62b7"</span>)</div></pre></td></tr></table></figure>
+<h1 id="5-Find-Query查询数据"><a href="#5-Find-Query查询数据" class="headerlink" title="5.Find,Query查询数据"></a>5.Find,Query查询数据</h1><ul>
+<li><a href="http://docs.mongodb.org/getting-started/python/query/" target="_blank" rel="external">参考:示例非常详尽</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</div><div class="line"></div><div class="line">client = MongoClient()</div><div class="line">db = client.test</div><div class="line"></div><div class="line"></div><div class="line">cursor = db.restaurants.find()</div><div class="line"><span class="keyword">for</span> document <span class="keyword">in</span> cursor:</div><div class="line">    print(document)</div><div class="line">    </div><div class="line">&#123; &lt;field1&gt;: &lt;value1&gt;, &lt;field2&gt;: &lt;value2&gt;, ... &#125;</div><div class="line"></div><div class="line">cursor = db.restaurants.find(&#123;<span class="string">"borough"</span>: <span class="string">"Manhattan"</span>&#125;)</div><div class="line"><span class="keyword">for</span> document <span class="keyword">in</span> cursor:</div><div class="line">    print(document)</div></pre></td></tr></table></figure>
+<ul>
+<li>对结果排序</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pymongo</div><div class="line">cursor = db.restaurants.find().sort([</div><div class="line">    (<span class="string">"borough"</span>, pymongo.ASCENDING),</div><div class="line">    (<span class="string">"address.zipcode"</span>, pymongo.DESCENDING)</div><div class="line">])</div><div class="line"></div><div class="line"><span class="keyword">for</span> document <span class="keyword">in</span> cursor:</div><div class="line">    print(document)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">```python</div></pre></td></tr></table></figure>
+<pre><code class="bash">
+</code></pre>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本篇介绍MongoDB学习笔记,会持续更新.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="DB" scheme="http://llinmeng.github.io/categories/DB/"/>
+    
+    
+      <category term="NoSQL" scheme="http://llinmeng.github.io/tags/NoSQL/"/>
+    
+      <category term="MongoDB" scheme="http://llinmeng.github.io/tags/MongoDB/"/>
+    
+      <category term="SQL" scheme="http://llinmeng.github.io/tags/SQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Sqlite常用SQL语句</title>
+    <link href="http://llinmeng.github.io/2015/06/27/sqlite-sql/"/>
+    <id>http://llinmeng.github.io/2015/06/27/sqlite-sql/</id>
+    <published>2015-06-27T21:38:13.000Z</published>
+    <updated>2016-11-26T08:03:18.791Z</updated>
+    
+    <content type="html"><![CDATA[<p>本篇介绍Sqlite常用SQL语句写法.</p>
+<a id="more"></a>
+<ul>
+<li>sqlite是很经典的微型数据库.使用非常方便.这里把常用操作整理一下,作个参考.</li>
+<li><p><a href="http://www.tutorialspoint.com/sqlite/sqlite_update_query.htm" target="_blank" rel="external">参考: 这篇SQL很多其他指令</a></p>
+</li>
+<li><p><a href="http://www.tutorialspoint.com/sqlite/sqlite_create_table.htm" target="_blank" rel="external">create table</a></p>
+</li>
+<li><p><a href="http://www.tutorialspoint.com/sqlite/sqlite_python.htm" target="_blank" rel="external">SQLite Python Tutorial</a></p>
+</li>
+<li><p>SQL操作: 增,删,改,查.</p>
+</li>
+</ul>
+<h2 id="1-CREATE-Table"><a href="#1-CREATE-Table" class="headerlink" title="1. CREATE Table"></a>1. CREATE Table</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">格式:</div><div class="line">CREATE TABLE database_name.table_name(</div><div class="line">   column1 datatype  PRIMARY KEY(one or more columns),</div><div class="line">   column2 datatype,</div><div class="line">   column3 datatype,</div><div class="line">   .....</div><div class="line">   columnN datatype,</div><div class="line">);</div><div class="line"></div><div class="line"></div><div class="line">示例:</div><div class="line">sqlite&gt;CREATE TABLE COMPANY(</div><div class="line">   ID INT PRIMARY KEY     NOT NULL,</div><div class="line">   NAME           TEXT    NOT NULL,</div><div class="line">   AGE            INT     NOT NULL,</div><div class="line">   ADDRESS        CHAR(50),</div><div class="line">   SALARY         REAL</div><div class="line">);</div></pre></td></tr></table></figure>
+<h2 id="2-DROP-Table"><a href="#2-DROP-Table" class="headerlink" title="2. DROP Table"></a>2. DROP Table</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">格式:</div><div class="line">DROP TABLE database_name.table_name;</div><div class="line"></div><div class="line">示例:</div><div class="line">sqlite&gt;.tables                # 查看有哪些表</div><div class="line">sqlite&gt;DROP TABLE COMPANY;    # 删除表</div></pre></td></tr></table></figure>
+<h2 id="3-INSERT-Table"><a href="#3-INSERT-Table" class="headerlink" title="3. INSERT Table"></a>3. INSERT Table</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">格式:</div><div class="line">方式1:</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> TABLE_NAME (column1, column2, column3,...columnN)]  </div><div class="line"><span class="keyword">VALUES</span> (value1, value2, value3,...valueN);</div><div class="line"></div><div class="line">方式2:</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> TABLE_NAME <span class="keyword">VALUES</span> (value1,value2,value3,...valueN);</div><div class="line"></div><div class="line">方式3:</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> first_table_name [(column1, column2, ... columnN)] </div><div class="line">   <span class="keyword">SELECT</span> column1, column2, ...columnN </div><div class="line">   <span class="keyword">FROM</span> second_table_name</div><div class="line">   [<span class="keyword">WHERE</span> condition];</div><div class="line">   </div><div class="line">示例:</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> COMPANY (<span class="keyword">ID</span>,<span class="keyword">NAME</span>,AGE,ADDRESS,SALARY)</div><div class="line"><span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">'Paul'</span>, <span class="number">32</span>, <span class="string">'California'</span>, <span class="number">20000.00</span> );</div><div class="line"></div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> COMPANY (<span class="keyword">ID</span>,<span class="keyword">NAME</span>,AGE,ADDRESS,SALARY)</div><div class="line"><span class="keyword">VALUES</span> (<span class="number">2</span>, <span class="string">'Allen'</span>, <span class="number">25</span>, <span class="string">'Texas'</span>, <span class="number">15000.00</span> );</div><div class="line"></div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> COMPANY (<span class="keyword">ID</span>,<span class="keyword">NAME</span>,AGE,ADDRESS,SALARY)</div><div class="line"><span class="keyword">VALUES</span> (<span class="number">3</span>, <span class="string">'Teddy'</span>, <span class="number">23</span>, <span class="string">'Norway'</span>, <span class="number">20000.00</span> );</div><div class="line"></div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> COMPANY (<span class="keyword">ID</span>,<span class="keyword">NAME</span>,AGE,ADDRESS,SALARY)</div><div class="line"><span class="keyword">VALUES</span> (<span class="number">4</span>, <span class="string">'Mark'</span>, <span class="number">25</span>, <span class="string">'Rich-Mond '</span>, <span class="number">65000.00</span> );</div><div class="line"></div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> COMPANY (<span class="keyword">ID</span>,<span class="keyword">NAME</span>,AGE,ADDRESS,SALARY)</div><div class="line"><span class="keyword">VALUES</span> (<span class="number">5</span>, <span class="string">'David'</span>, <span class="number">27</span>, <span class="string">'Texas'</span>, <span class="number">85000.00</span> );</div><div class="line"></div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> COMPANY (<span class="keyword">ID</span>,<span class="keyword">NAME</span>,AGE,ADDRESS,SALARY)</div><div class="line"><span class="keyword">VALUES</span> (<span class="number">6</span>, <span class="string">'Kim'</span>, <span class="number">22</span>, <span class="string">'South-Hall'</span>, <span class="number">45000.00</span> );</div></pre></td></tr></table></figure>
+<h2 id="4-UPDATE-Table"><a href="#4-UPDATE-Table" class="headerlink" title="4. UPDATE Table"></a>4. UPDATE Table</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">格式:</div><div class="line">UPDATE table_name</div><div class="line">SET column1 = value1, column2 = value2...., columnN = valueN</div><div class="line">WHERE [condition];</div><div class="line"></div><div class="line"></div><div class="line">示例:</div><div class="line">qlite&gt; UPDATE COMPANY SET ADDRESS = 'Texas' WHERE ID = 6;</div><div class="line">sqlite&gt; UPDATE COMPANY SET ADDRESS = 'Texas', SALARY = 20000.00;</div></pre></td></tr></table></figure>
+<h2 id="5-SELECT-Table"><a href="#5-SELECT-Table" class="headerlink" title="5. SELECT Table"></a>5. SELECT Table</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">格式:</div><div class="line">方式1:</div><div class="line">SELECT column1, column2, columnN FROM table_name;</div><div class="line"></div><div class="line">方式2:</div><div class="line">SELECT * FROM table_name;</div><div class="line"></div><div class="line"></div><div class="line">示例:</div><div class="line">sqlite&gt; SELECT ID, NAME, SALARY FROM COMPANY;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本篇介绍Sqlite常用SQL语句写法.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="DB" scheme="http://llinmeng.github.io/categories/DB/"/>
+    
+    
+      <category term="SQL" scheme="http://llinmeng.github.io/tags/SQL/"/>
+    
+      <category term="sqlite" scheme="http://llinmeng.github.io/tags/sqlite/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RPC(分布式远程过程调用) 和 MQ(消息队列) 的对比</title>
+    <link href="http://llinmeng.github.io/2015/06/25/rpc-vs-mq/"/>
+    <id>http://llinmeng.github.io/2015/06/25/rpc-vs-mq/</id>
+    <published>2015-06-25T22:12:10.000Z</published>
+    <updated>2016-11-26T08:03:18.791Z</updated>
+    
+    <content type="html"><![CDATA[<p>本篇介绍 RPC(分布式远程过程调用) 和 MQ(消息队列) 的对比.</p>
+<a id="more"></a>
+<h2 id="RPC-分布式远程过程调用-和-MQ-消息队列-的-应用场景-和区别"><a href="#RPC-分布式远程过程调用-和-MQ-消息队列-的-应用场景-和区别" class="headerlink" title="RPC(分布式远程过程调用) 和 MQ(消息队列) 的 应用场景 和区别"></a>RPC(分布式远程过程调用) 和 MQ(消息队列) 的 应用场景 和区别</h2><ul>
+<li><a href="http://blog.sina.com.cn/s/blog_4e017a9001000951.html" target="_blank" rel="external">消息机制和RPC的区别</a></li>
+<li><a href="http://oldratlee.com/post/2013-02-01/synchronous-rpc-vs-asynchronous-message/" target="_blank" rel="external">远程调用服务(RPC)和消息(Message Queue)对比及其适用/不适用场合</a></li>
+<li><a href="http://ternarysearch.blogspot.com/2013/01/message-queues-and-rpc.html" target="_blank" rel="external">Message Queues and RPC</a></li>
+</ul>
+<h2 id="系统结构"><a href="#系统结构" class="headerlink" title="系统结构:"></a>系统结构:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">RPC系统结构：</div><div class="line"></div><div class="line">+----------+     +----------+</div><div class="line">| Consumer | &lt;=&gt; | Provider |</div><div class="line">+----------+     +----------+</div><div class="line">Consumer调用的Provider提供的服务。</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">Message Queue系统结构：</div><div class="line"></div><div class="line">+--------+     +-------+     +----------+</div><div class="line">| Sender | &lt;=&gt; | Queue | &lt;=&gt; | Receiver |</div><div class="line">+--------+     +-------+     +----------+</div><div class="line">Sender发送消息给Queue；Receiver从Queue拿到消息来处理。</div></pre></td></tr></table></figure>
+<ul>
+<li>在架构上，RPC和Message的差异点是:<ul>
+<li>Message有一个中间结点Message Queue，可以把消息存储。</li>
+</ul>
+</li>
+</ul>
+<h2 id="消息队列-的使用场景"><a href="#消息队列-的使用场景" class="headerlink" title="消息队列 的使用场景:"></a>消息队列 的使用场景:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">（一）短信发送</div><div class="line"></div><div class="line">短信通常都是由第三方服务商提供的服务，对于其稳定性与可靠度来说，通常也就是打90分吧。对于那些需要发送短信的应用程序来说，通常将其放入队列中去处理，而不是傻傻的等待。</div><div class="line"></div><div class="line">（二）日志记录</div><div class="line"></div><div class="line">不是所有的日志记录都需要使用消息队列来处理。通常只有那些同时操作一个日志文件的情况下才会使用消息队列。另外的一种情况是，需要对日志进行同步处理后分析的场景。</div><div class="line"></div><div class="line">（三）邮件服务</div><div class="line"></div><div class="line">邮件服务于短信发送类似，对于那些不需要即时回复和响应速度并不特别特别快的第三方应用，使用队列来处理是最大的好处。既能节省资源，又能提高用户体验，还能防止系统崩溃。</div><div class="line"></div><div class="line">（四）通知服务</div><div class="line"></div><div class="line">对于给用户发消息这样的业务来说，使用消息队列也是极好的，尽管几十万内的插入语句使用SQL就可以完全搞定。使用通知服务对于那些SQL不是很好的人来说，也是很好的福利。</div><div class="line"></div><div class="line">另外，对于多应用使用缓存提高查询效率的情景，使用消息队列也是极好的。试想一下，当你更新一个用户后，使用发布/订阅者模式处理缓存，是不是比其它任何模式都要高效呢。</div><div class="line"></div><div class="line">（五）高并发请求</div><div class="line"></div><div class="line">是不是又想起了淘宝双11网站瘫痪，12306一票难求，京东图书大促网页打不开，消息队列尤其适用于这种超负载的场景。通过过消息队列，将短时间高并发产生的事务消息存储在消息队列中，从而削平高峰期的并发事务，改善网站系统的性能，这样可以有效地抵御促销活动刚开始就开始大量涌入的订单对系统造成的冲击 。</div></pre></td></tr></table></figure>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别:"></a>区别:</h2><ul>
+<li><p>消息机制: 用于端到端的延迟通信;</p>
+<blockquote>
+<p>在RPC机制下，<br>用于接收数据的进程必须在数据发送时处于执行状态。<br>如果在消息发送过程中，接收进程死掉了，则数据将不能再传输。</p>
+</blockquote>
+</li>
+<li><p>RPC: 用于端到端的同步通信。</p>
+</li>
+</ul>
+<blockquote>
+<p>相反，在消息传递机制下，<br>则可以在服务进程死掉后，仍然可以发送消息，而不必因为此时服务进程没有接收消息而阻塞或重发消息。<br>因为，基于消息机制时，消息被放置在一个消息队列中，而且服务进程可以在任何时候取得所属自己的消息。<br>因此，在发送消息时，服务进程是否在执行不再重要。</p>
+</blockquote>
+<h2 id="消息机制-和-RPC-各自特点"><a href="#消息机制-和-RPC-各自特点" class="headerlink" title="消息机制 和 RPC 各自特点:"></a>消息机制 和 RPC 各自特点:</h2><ul>
+<li>RPC机制的特点:</li>
+</ul>
+<blockquote>
+<p>提供一个较高层次上的通信抽象，更完全地隐藏应用分布的实质。<br>尽可能地优化客户和服务器之间的交互，因为这种机制直接的请求/应答协议支持。<br>客户在等待一个服务应答时，只是简单地等待。</p>
+</blockquote>
+<ul>
+<li>消息机制的特点:</li>
+</ul>
+<blockquote>
+<p>客户在等待对方进程的应答时，可以自由的执行其他的操作。<br>允许对一个请求发多个应答或多个请求发一个应答。<br>适合具有较长交易周期的应用。<br>可通过以任何顺序从消息队列中取走消息、的形式，来支持优先级和负载均衡。<br>可支持容错。<br>主要用于支持大型系统和分布范围很广的分布式系统。</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本篇介绍 RPC(分布式远程过程调用) 和 MQ(消息队列) 的对比.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tools" scheme="http://llinmeng.github.io/categories/Tools/"/>
+    
+    
+      <category term="Chrome" scheme="http://llinmeng.github.io/tags/Chrome/"/>
+    
+      <category term="plugin" scheme="http://llinmeng.github.io/tags/plugin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Chrome必装插件</title>
+    <link href="http://llinmeng.github.io/2015/06/25/chrome-plugins/"/>
+    <id>http://llinmeng.github.io/2015/06/25/chrome-plugins/</id>
+    <published>2015-06-25T22:12:10.000Z</published>
+    <updated>2016-11-26T08:03:18.791Z</updated>
+    
+    <content type="html"><![CDATA[<p>本篇介绍Chrome好用的必装插件.</p>
+<a id="more"></a>
+<p>翻墙后,在google应用商店搜索下载安装.</p>
+<ul>
+<li>Adblock Plus : 广告屏蔽</li>
+<li>Chrono下载管理器 : 管理下载</li>
+<li>Search by Image (by Google) : google搜图</li>
+<li>UndoCloseTab : 撤销已关闭页面</li>
+<li>Save as PDF : 页面保存为PDF</li>
+<li>Docs PDF/PowerPoint Viewer（由 Google 提供） : PDF阅读</li>
+<li>Highlight Keywords for Google Search: 搜索高亮关键词</li>
+<li>一键管理所有扩展 : 如是说.</li>
+<li>印象笔记·剪藏 : 网页剪切,同步印象笔记</li>
+<li>Infinity新标签页 : 辅助多标签</li>
+<li>红杏 : VPN插件</li>
+<li>Proxy SwitchySharp : 代理VPN</li>
+<li>Postman - REST Client : 模拟HTTP请求</li>
+<li>Web Developer : web开发工具</li>
+<li>WEB前端助手(FeHelper) : web开发</li>
+<li>React Developer Tools : react调试工具</li>
+<li>Bookmark Search : 搜索收藏夹</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本篇介绍Chrome好用的必装插件.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tools" scheme="http://llinmeng.github.io/categories/Tools/"/>
+    
+    
+      <category term="Chrome" scheme="http://llinmeng.github.io/tags/Chrome/"/>
+    
+      <category term="plugin" scheme="http://llinmeng.github.io/tags/plugin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo博客优化 - Next主题个性化定制</title>
+    <link href="http://llinmeng.github.io/2015/06/24/github-hexo-themes-next-config/"/>
+    <id>http://llinmeng.github.io/2015/06/24/github-hexo-themes-next-config/</id>
+    <published>2015-06-24T21:15:31.000Z</published>
+    <updated>2016-11-26T08:03:18.791Z</updated>
+    
+    <content type="html"><![CDATA[<p>本篇详细介绍Hexo-Next主题的一些个性化定制.</p>
+<a id="more"></a>
+<h2 id="1-添加自定义导航分类-以Next主题为例-其他主题类似"><a href="#1-添加自定义导航分类-以Next主题为例-其他主题类似" class="headerlink" title="1. 添加自定义导航分类(以Next主题为例,其他主题类似)"></a>1. 添加自定义导航分类(以Next主题为例,其他主题类似)</h2><h3 id="需求"><a href="#需求" class="headerlink" title="需求:"></a>需求:</h3><ul>
+<li>默认自带分类:首页,归档,分类,标签,关于.不够用.</li>
+<li>想增加一些自定义的分类.</li>
+<li>本文以添加 <code>工具(tools)</code> 分类为例.</li>
+<li>摸索了半天,修改并不复杂.只需要修改3处地方.</li>
+</ul>
+<h3 id="修改点"><a href="#修改点" class="headerlink" title="修改点:"></a>修改点:</h3><ul>
+<li>iBlog/source/tools/index.md</li>
+<li>iBlog/themes/next/_config.yml</li>
+<li>iBlog/themes/next/languages/zh-Hans.yml</li>
+</ul>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤:"></a>步骤:</h3><h4 id="1-新建source-tools-index-md文件"><a href="#1-新建source-tools-index-md文件" class="headerlink" title="1. 新建source/tools/index.md文件."></a>1. 新建source/tools/index.md文件.</h4><blockquote>
+<p>在/source/ 文件夹,新建 tools目录,并添加一个index.md文件.可以拷贝其他目录(如tags)中的index.md文件.</p>
+</blockquote>
+<h4 id="2-修改themes-next-config-yml文件参数"><a href="#2-修改themes-next-config-yml文件参数" class="headerlink" title="2. 修改themes/next/_config.yml文件参数."></a>2. 修改themes/next/_config.yml文件参数.</h4><blockquote>
+<p>找到menu标签项, 添加子项:  tools: /tools</p>
+</blockquote>
+<ul>
+<li>配置修改:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># when running hexo in a subdirectory (e.g. domain.tld/blog), remove leading slashes ( "/archives" -&gt; "archives" )</span></div><div class="line">menu:</div><div class="line">  home: /</div><div class="line">  archives: /archives</div><div class="line">  categories: /categories</div><div class="line">  tags: /tags</div><div class="line">  tools: /tools      <span class="comment"># 添加位置</span></div><div class="line">  about: /about</div><div class="line">  <span class="comment">#commonweal: /404.html</span></div></pre></td></tr></table></figure>
+<h4 id="3-修改themes-next-languages-zh-Hans-yml"><a href="#3-修改themes-next-languages-zh-Hans-yml" class="headerlink" title="3. 修改themes/next/languages/zh-Hans.yml"></a>3. 修改themes/next/languages/zh-Hans.yml</h4><blockquote>
+<p>该文件,就对应中英文替换.如果漏修改此次.导航栏,就显示英文,很丑.</p>
+</blockquote>
+<ul>
+<li>配置修改:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">title:</div><div class="line">  archive: 归档</div><div class="line">  category: 分类</div><div class="line">  tag: 标签</div><div class="line"></div><div class="line">menu:</div><div class="line">  home: 首页</div><div class="line">  archives: 归档</div><div class="line">  categories: 分类</div><div class="line">  tags: 标签</div><div class="line">  tools: 工具       <span class="comment"># 添加位置</span></div><div class="line">  about: 关于</div><div class="line">  commonweal: 公益404</div></pre></td></tr></table></figure>
+<h4 id="4-修改完-重新编译部署即可"><a href="#4-修改完-重新编译部署即可" class="headerlink" title="4. 修改完,重新编译部署即可."></a>4. 修改完,重新编译部署即可.</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo d -g</div></pre></td></tr></table></figure>
+<h2 id="2-添加Fork-Me-On-Github"><a href="#2-添加Fork-Me-On-Github" class="headerlink" title="2. 添加Fork Me On Github"></a>2. 添加Fork Me On Github</h2><ul>
+<li>添加<code>Fork Me On Github</code>挂件在博客左上角(右上角).官网<a href="https://github.com/blog/273-github-ribbons" target="_blank" rel="external">可选样式</a></li>
+</ul>
+<h3 id="1-拷贝Github挂件样式代码如下"><a href="#1-拷贝Github挂件样式代码如下" class="headerlink" title="1. 拷贝Github挂件样式代码如下:"></a>1. 拷贝Github挂件样式代码如下:</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://github.com/you"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">style</span>=<span class="string">"position: absolute; top: 0; left: 0; border: 0;"</span> <span class="attr">src</span>=<span class="string">"https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67"</span> <span class="attr">alt</span>=<span class="string">"Fork me on GitHub"</span> <span class="attr">data-canonical-src</span>=<span class="string">"https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="2-修改上述代码中href地址为自己的github地址"><a href="#2-修改上述代码中href地址为自己的github地址" class="headerlink" title="2. 修改上述代码中href地址为自己的github地址."></a>2. 修改上述代码中href地址为自己的github地址.</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://github.com/you"</span>&gt;</span></div><div class="line">改为:</div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://github.com/hhstore"</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="3-修改hexo主题-这里以Next主题为例-不同主题修改略有差异-请注意"><a href="#3-修改hexo主题-这里以Next主题为例-不同主题修改略有差异-请注意" class="headerlink" title="3. 修改hexo主题(这里以Next主题为例,不同主题修改略有差异,请注意)"></a>3. 修改hexo主题(这里以Next主题为例,不同主题修改略有差异,请注意)</h3><ul>
+<li>修改文件: themes/next/layout/_layout.swig</li>
+<li>打开_layout.swig文件,找到如下对应位置,添加上述样式代码段即可.</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">&lt;!doctype html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">class</span>=<span class="string">"theme-next &#123;% if theme.use_motion %&#125;use-motion&#123;% endif %&#125; &#123;% if theme.scheme %&#125;theme-next-&#123;&#123; theme.scheme | lower &#125;&#125;&#123;% endif %&#125;"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  &#123;% include '_partials/head.swig' %&#125;</div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>&#123;% block title %&#125;&#123;% endblock %&#125;<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  &#123;% include '_partials/old-browsers.swig' %&#125;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container one-column &#123;% block page_class %&#125;&#123;% endblock %&#125;"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"headband"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="comment">&lt;!----------- add Fork me on Github ------------&gt;</span></div><div class="line">    </div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://github.com/hhstore"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">style</span>=<span class="string">"position: absolute; top: 500; left: 0; border: 0;"</span> <span class="attr">src</span>=<span class="string">"https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67"</span> <span class="attr">alt</span>=<span class="string">"Fork me on GitHub"</span> <span class="attr">data-canonical-src</span>=<span class="string">"https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    </div><div class="line">    <span class="comment">&lt;!----------- add Fork me on Github ------------&gt;</span>   </div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"header"</span> <span class="attr">class</span>=<span class="string">"header"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"header-inner"</span>&gt;</span></div><div class="line">        &#123;% include '_partials/header.swig' %&#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-------------省略-------------------&gt;</span></div><div class="line">    <span class="comment">&lt;!-------------省略-------------------&gt;</span></div><div class="line"></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"back-to-top"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="3-添加博客访问量统计"><a href="#3-添加博客访问量统计" class="headerlink" title="3. 添加博客访问量统计"></a>3. 添加博客访问量统计</h2><ul>
+<li><a href="http://ibruce.info/2015/04/04/busuanzi/" target="_blank" rel="external">不蒜子</a></li>
+<li><a href="http://jackroyal.github.io/2015/05/30/hexo-setting-with-comments-and-visitors/" target="_blank" rel="external">hexo添加访问统计</a></li>
+<li>使用不蒜子脚本.</li>
+<li>修改主题模板,几处地方,效果如本博客.</li>
+</ul>
+<h3 id="3-1-博文访问量统计修改点-只适用于Next主题-其他主题-参考修改"><a href="#3-1-博文访问量统计修改点-只适用于Next主题-其他主题-参考修改" class="headerlink" title="3.1 博文访问量统计修改点:(只适用于Next主题,其他主题,参考修改)"></a>3.1 博文访问量统计修改点:(只适用于Next主题,其他主题,参考修改)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">iB<span class="built_in">log</span>/themes/next/layout/_macro/post.swig</div><div class="line"></div><div class="line">在&lt;div class=<span class="string">"post-header"</span>&gt;&lt;/div&gt; 中找到&lt;div class=<span class="string">"post-meta"</span>&gt;&lt;/div&gt;</div><div class="line">在其中,最末尾处,添加如下代码:(该代码实现,非博客主页,才显示阅读量统计)</div><div class="line"></div><div class="line">        &#123;% <span class="keyword">if</span> not is_index %&#125;</div><div class="line">          &lt;span id=<span class="string">"busuanzi_container_page_pv"</span>&gt;  |  阅读量 &lt;span id=<span class="string">"busuanzi_value_page_pv"</span>&gt;&lt;/span&gt; 次&lt;/span&gt;</div><div class="line">        &#123;% endif %&#125;</div></pre></td></tr></table></figure>
+<h2 id="4-添加多说评论"><a href="#4-添加多说评论" class="headerlink" title="4. 添加多说评论"></a>4. 添加多说评论</h2><ul>
+<li><a href="http://dev.duoshuo.com/threads/541d3b2b40b5abcd2e4df0e9" target="_blank" rel="external">Hexo使用多说教程</a></li>
+<li><a href="http://dev.duoshuo.com/docs/5016427f77cf5fa30500000e" target="_blank" rel="external">多说API - 代码显示【文章评论数】方法</a></li>
+</ul>
+<h2 id="5-添加站内搜索"><a href="#5-添加站内搜索" class="headerlink" title="5. 添加站内搜索"></a>5. 添加站内搜索</h2><ul>
+<li>站内搜索服务: 百度,google.考虑google被墙,建议选择第三方的.</li>
+<li>第三方站内搜索服务: tinysou/Swiftype </li>
+<li><a href="https://swiftype.com/" target="_blank" rel="external">swiftype服务</a></li>
+<li><a href="http://doc.tinysou.com/" target="_blank" rel="external">tinysou服务</a></li>
+<li><a href="http://www.arao.me/2015/hexo-next-theme-optimize-base/" target="_blank" rel="external">参考: 动动手指，NexT主题与Hexo更搭哦（基础篇）</a></li>
+<li>特别提醒: 参考如上文档修改后,如果博客中的swiftype搜索框,无法正常弹出.请注意检查chrome浏览器的广告插件(Adblock Plus),设置成”对当前网站禁用”,刷新即可.</li>
+</ul>
+<h2 id="6-SEO优化"><a href="#6-SEO优化" class="headerlink" title="6. SEO优化"></a>6. SEO优化</h2><h3 id="6-1-优化title"><a href="#6-1-优化title" class="headerlink" title="6.1 优化title"></a>6.1 优化title</h3><p>更改index.swig文件，文件路径是your-hexo-site\themes\next\layout，</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">将下面代码:</div><div class="line"></div><div class="line">&#123;% block title %&#125; </div><div class="line">  &#123;&#123; config.title &#125;&#125; </div><div class="line">&#123;% endblock %&#125;</div><div class="line"></div><div class="line">改成:</div><div class="line"></div><div class="line">&#123;% block title %&#125; </div><div class="line">  &#123;&#123; config.title &#125;&#125; - &#123;&#123; theme.description &#125;&#125; </div><div class="line">&#123;% endblock %&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>首页标题,会更符合 “网站名称 - 网站描述” 这习惯。</li>
+</ul>
+<h3 id="6-2-进阶-seo优化，在Title中显示关键词"><a href="#6-2-进阶-seo优化，在Title中显示关键词" class="headerlink" title="6.2 进阶: seo优化，在Title中显示关键词"></a>6.2 进阶: seo优化，在Title中显示关键词</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% block title %&#125; </div><div class="line">  &#123;&#123; theme.keywords &#125;&#125; - &#123;&#123; config.title &#125;&#125; - &#123;&#123; theme.description &#125;&#125; </div><div class="line">&#123;% endblock %&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>注意：别堆砌关键字，整个标题一般不超过80个字符，可以通过chinaz的seo综合查询检查。</li>
+</ul>
+<h2 id="7-添加友情链接"><a href="#7-添加友情链接" class="headerlink" title="7. 添加友情链接"></a>7. 添加友情链接</h2><ul>
+<li><a href="http://zipperary.com/2013/05/30/hexo-guide-4/" target="_blank" rel="external">参考</a></li>
+</ul>
+<h2 id="8-添加最近访客"><a href="#8-添加最近访客" class="headerlink" title="8. 添加最近访客"></a>8. 添加最近访客</h2><ul>
+<li><a href="http://www.arao.me/2015/hexo-next-theme-optimize-duoshuo/" target="_blank" rel="external">动动手指，给你的Hexo站点添加最近访客（多说篇）</a></li>
+</ul>
+<h2 id="9-博客迁移至gitcafe"><a href="#9-博客迁移至gitcafe" class="headerlink" title="9. 博客迁移至gitcafe"></a>9. 博客迁移至gitcafe</h2><ul>
+<li><a href="https://gitcafe.com/" target="_blank" rel="external">gitcafe</a></li>
+<li>参考: <a href="http://zipperary.com/2013/11/23/hexo-to-gitcafe/" target="_blank" rel="external">《托管博客到gitcafe》</a></li>
+<li>由于 Google 被大陆屏蔽，Github 从大陆访问也比较慢，且不太稳定。</li>
+<li>考虑把 Blog 迁移到国内，Gitcafe提供的免费 Page 服务，方便迁移。</li>
+<li>建议把 google 提供的 jquery 和 fonts api 全换掉。</li>
+<li>由于不同的主题其位置不同，最好是搜索一下。</li>
+</ul>
+<h2 id="10-博文中添加图片-音乐-视频"><a href="#10-博文中添加图片-音乐-视频" class="headerlink" title="10 博文中添加图片,音乐,视频."></a>10 博文中添加图片,音乐,视频.</h2><ul>
+<li><a href="http://zipperary.com/2013/06/27/media-on-hexo/" target="_blank" rel="external">参考</a></li>
+</ul>
+<h2 id="11-博客绑定二级域名"><a href="#11-博客绑定二级域名" class="headerlink" title="11. 博客绑定二级域名"></a>11. 博客绑定二级域名</h2><ul>
+<li>待更新.</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本篇详细介绍Hexo-Next主题的一些个性化定制.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://llinmeng.github.io/categories/Hexo/"/>
+    
+    
+      <category term="Github" scheme="http://llinmeng.github.io/tags/Github/"/>
+    
+      <category term="Hexo" scheme="http://llinmeng.github.io/tags/Hexo/"/>
+    
+      <category term="Next" scheme="http://llinmeng.github.io/tags/Next/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Github + Hexo搭建博客教程</title>
+    <link href="http://llinmeng.github.io/2015/06/24/github-hexo-build-blog/"/>
+    <id>http://llinmeng.github.io/2015/06/24/github-hexo-build-blog/</id>
+    <published>2015-06-24T21:15:30.000Z</published>
+    <updated>2016-11-26T08:03:18.791Z</updated>
+    
+    <content type="html"><![CDATA[<p>本篇介绍利用Github和Hexo搭建技术博客的详细过程,以及各种优化配置.</p>
+<a id="more"></a>
+<ul>
+<li>花了一天时间,摸索利用Github+hexo,完成博客的搭建.基本上可用了,把搭建过程整理成博客,发首篇吧.</li>
+<li>一点体会:建议每个人都把hexo官网文档完整看一遍.有助于更好理解,并配置hexo博客.</li>
+</ul>
+<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h2><ul>
+<li><a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="external">hexo官方文档</a></li>
+<li>先行安装 <a href="https://nodejs.org/" target="_blank" rel="external">Node.js</a> 和 <a href="http://git-scm.com/" target="_blank" rel="external">Git</a></li>
+</ul>
+<h3 id="1-1安装Git"><a href="#1-1安装Git" class="headerlink" title="1.1安装Git"></a>1.1安装Git</h3><ul>
+<li>Windows：下载并安装 git.</li>
+<li>Mac：使用 <code>Homebrew, MacPorts</code> 或下载 安装程序 安装。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install git</div></pre></td></tr></table></figure>
+<ul>
+<li>Linux (Ubuntu, Debian)：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install git-core</div></pre></td></tr></table></figure>
+<ul>
+<li>Linux (Fedora, Red Hat, CentOS)：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum install git-core</div></pre></td></tr></table></figure>
+<h3 id="1-2安装Node-js"><a href="#1-2安装Node-js" class="headerlink" title="1.2安装Node.js"></a>1.2安装Node.js</h3><p>安装 Node.js 的最佳方式是使用 nvm。</p>
+<ul>
+<li>cURL:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl https://raw.github.com/creationix/nvm/master/install.sh | sh</div></pre></td></tr></table></figure>
+<ul>
+<li>Wget:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh</div></pre></td></tr></table></figure>
+<ul>
+<li>安装完成后，重启终端并执行下列命令即可安装 Node.js。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ nvm install 0.10</div></pre></td></tr></table></figure>
+<ul>
+<li>或者您也可以下载 应用程序 来安装。</li>
+</ul>
+<h3 id="1-3安装Hexo"><a href="#1-3安装Hexo" class="headerlink" title="1.3安装Hexo"></a>1.3安装Hexo</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">sudo npm install -g hexo-cli</div><div class="line">sudo npm install hexo --save</div><div class="line"></div><div class="line">针对Mac平台:</div><div class="line">若编译报错,请先到AppStore下载安装`Xcode`.</div><div class="line">安装完,启动并进入 Preferences -&gt; Download -&gt; Command Line Tools -&gt; Install 安装命令行工具。再执行上述命令.</div></pre></td></tr></table></figure>
+<h3 id="1-4安装Hexo插件"><a href="#1-4安装Hexo插件" class="headerlink" title="1.4安装Hexo插件"></a>1.4安装Hexo插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">sudo npm install hexo-generator-index --save</div><div class="line">sudo npm install hexo-generator-archive --save</div><div class="line">sudo npm install hexo-generator-category --save</div><div class="line">sudo npm install hexo-generator-tag --save</div><div class="line">sudo npm install hexo-server --save</div><div class="line">sudo npm install hexo-deployer-git --save</div><div class="line">sudo npm install hexo-deployer-heroku --save</div><div class="line">sudo npm install hexo-deployer-rsync --save</div><div class="line">sudo npm install hexo-deployer-openshift --save</div><div class="line">sudo npm install hexo-renderer-marked@0.2 --save</div><div class="line">sudo npm install hexo-renderer-stylus@0.2 --save</div><div class="line">sudo npm install hexo-generator-feed@1 --save</div><div class="line">sudo npm install hexo-generator-sitemap@1 --save</div></pre></td></tr></table></figure>
+<h2 id="2-创建博客"><a href="#2-创建博客" class="headerlink" title="2.创建博客"></a>2.创建博客</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">- [参考](https://hexo.io/zh-cn/docs/setup.html)</div><div class="line"></div><div class="line"><span class="comment">### 2.1初始化博客目录(eg: myblog)</span></div><div class="line"></div><div class="line">```bash</div><div class="line">    mkdir myblog       <span class="comment"># 新建 博客文件夹</span></div><div class="line">    <span class="built_in">cd</span> myblog          <span class="comment"># 切换到 博客文件夹</span></div><div class="line">    hexo init          <span class="comment"># 初始化</span></div><div class="line">    sudo npm install   <span class="comment"># 安装依赖</span></div></pre></td></tr></table></figure>
+<ul>
+<li>命令执行后,myblog目录下文件结构:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── _config.yml</div><div class="line">├── package.json</div><div class="line">├── scaffolds</div><div class="line">├── scripts</div><div class="line">├── source</div><div class="line">|   ├── _drafts</div><div class="line">|   └── _posts</div><div class="line">└── themes</div></pre></td></tr></table></figure>
+<h3 id="2-2目录结构说明"><a href="#2-2目录结构说明" class="headerlink" title="2.2目录结构说明:"></a>2.2目录结构说明:</h3><h4 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h4><ul>
+<li>网站的 配置 信息，您可以在此配置大部分的参数。</li>
+</ul>
+<h4 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h4><ul>
+<li>应用程序的信息。EJS, Stylus 和 Markdown renderer 已默认安装，您可以自由移除。</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">package.json</div><div class="line">&#123;</div><div class="line">  "name": "hexo-site",</div><div class="line">  "version": "",</div><div class="line">  "private": true,</div><div class="line">  "hexo": &#123;</div><div class="line">    "version": ""</div><div class="line">  &#125;,</div><div class="line">  "dependencies": &#123;</div><div class="line">    "hexo-renderer-ejs": "*",</div><div class="line">    "hexo-renderer-stylus": "*",</div><div class="line">    "hexo-renderer-marked": "*"</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="scaffolds"><a href="#scaffolds" class="headerlink" title="scaffolds"></a>scaffolds</h4><ul>
+<li>模版 文件夹。当您新建文章时，Hexo 会根据 scaffold 来建立文件。</li>
+</ul>
+<h4 id="scripts"><a href="#scripts" class="headerlink" title="scripts"></a>scripts</h4><ul>
+<li>脚本 文件夹。脚本是扩展 Hexo 最简易的方式，在此文件夹内的 JavaScript 文件会被自动执行。</li>
+</ul>
+<h4 id="source"><a href="#source" class="headerlink" title="source"></a>source</h4><ul>
+<li>资源文件夹是存放用户资源的地方。除 <em>posts 文件夹之外，开头命名为 </em> (下划线)的文件 / 文件夹和隐藏的文件将会被忽略。Markdown 和 HTML 文件会被解析并放到 public 文件夹，而其他文件会被拷贝过去。</li>
+</ul>
+<h4 id="themes"><a href="#themes" class="headerlink" title="themes"></a>themes</h4><ul>
+<li>主题 文件夹。Hexo 会根据主题来生成静态页面。</li>
+</ul>
+<h2 id="3-运行博客"><a href="#3-运行博客" class="headerlink" title="3.运行博客"></a>3.运行博客</h2><h3 id="3-1本地运行"><a href="#3-1本地运行" class="headerlink" title="3.1本地运行"></a>3.1本地运行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">- 执行以下命令，成功后可访问 `localhost:4000` 查看效果</div><div class="line"></div><div class="line">```bash</div><div class="line">hexo server</div></pre></td></tr></table></figure>
+<h3 id="3-2常用配置命令"><a href="#3-2常用配置命令" class="headerlink" title="3.2常用配置命令"></a>3.2常用配置命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">hexo new <span class="string">"My New Post"</span>    <span class="comment"># Create a new post </span></div><div class="line">hexo server               <span class="comment"># Run server </span></div><div class="line">hexo generate             <span class="comment"># Generate static files</span></div><div class="line">hexo deploy               <span class="comment"># Deploy to remote sites</span></div><div class="line"></div><div class="line">命令简写:</div><div class="line">hexo n     <span class="comment"># new</span></div><div class="line">hexo g     <span class="comment"># generate</span></div><div class="line">hexo s     <span class="comment"># server</span></div><div class="line">hexo d     <span class="comment"># deploy</span></div><div class="line"></div><div class="line">常用复合命令：</div><div class="line">hexo d -g   <span class="comment"># 生成加部署</span></div><div class="line">hexo s -g   <span class="comment"># 预览加部署</span></div></pre></td></tr></table></figure>
+<h2 id="4-部署到github"><a href="#4-部署到github" class="headerlink" title="4.部署到github"></a>4.部署到github</h2><h3 id="4-1-github上新建仓库-hhstore-github-io"><a href="#4-1-github上新建仓库-hhstore-github-io" class="headerlink" title="4.1 github上新建仓库:hhstore.github.io"></a>4.1 github上新建仓库:<code>hhstore.github.io</code></h3><ul>
+<li>注意: 该仓库必须按照此格式命名: XXXX.github.io</li>
+<li>XXXX 为 github 用户名</li>
+</ul>
+<h3 id="4-2-配置-config-yml"><a href="#4-2-配置-config-yml" class="headerlink" title="4.2 配置_config.yml"></a>4.2 配置_config.yml</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> myblog</div><div class="line">找到_config.yml</div></pre></td></tr></table></figure>
+<p>更改其中内容:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repository: https://github.com/hhstore/hhstore.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
+<h3 id="4-3-部署到github"><a href="#4-3-部署到github" class="headerlink" title="4.3 部署到github:"></a>4.3 部署到github:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">hexo g</div><div class="line">hexo d <span class="comment"># 部署到github</span></div><div class="line"></div><div class="line">&gt; 执行上述命令后,产生如下提示:</div><div class="line">&gt; Username <span class="keyword">for</span> <span class="string">'https://github.com'</span>:</div><div class="line">&gt; hhstore   <span class="comment"># 输入用户名</span></div><div class="line">&gt; </div><div class="line">&gt; Password <span class="keyword">for</span> <span class="string">'https://hhstore@github.com'</span>:</div><div class="line">&gt; XXXXX    <span class="comment"># 提示输入用户密码.</span></div><div class="line">&gt; </div><div class="line">&gt; INFO  Deploy <span class="keyword">done</span>: git  <span class="comment"># 提示部署成功.</span></div></pre></td></tr></table></figure>
+<ul>
+<li>若执行成功,会自动将public内容 同步到 hhstore.github.io 仓库.</li>
+<li>若报错:ERROR Deployer not found: git , 执行如下命令:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
+<ul>
+<li>上一步,安装成功后,再次执行:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo d</div></pre></td></tr></table></figure>
+<h3 id="4-4-访问博客"><a href="#4-4-访问博客" class="headerlink" title="4.4 访问博客"></a>4.4 访问博客</h3><ul>
+<li>若以上步骤无误,访问博客地址: <a href="http://hhstore.github.io/" target="_blank" rel="external">http://hhstore.github.io/</a></li>
+</ul>
+<h2 id="5-优化博客"><a href="#5-优化博客" class="headerlink" title="5.优化博客"></a>5.优化博客</h2><h3 id="5-1绑定域名"><a href="#5-1绑定域名" class="headerlink" title="5.1绑定域名"></a>5.1绑定域名</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> myblog   <span class="comment"># 依旧是 博客源目录</span></div><div class="line"><span class="built_in">cd</span> <span class="built_in">source</span>   <span class="comment"># 切换到 source 文件夹下</span></div><div class="line">touch CNAME   <span class="comment"># 新建 CNAME 文件</span></div></pre></td></tr></table></figure>
+<ul>
+<li>在CNAME文件中输入:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">selfrebuild.net</div></pre></td></tr></table></figure>
+<h3 id="5-2安装主题"><a href="#5-2安装主题" class="headerlink" title="5.2安装主题"></a>5.2安装主题</h3><ul>
+<li><a href="http://yangjian.me/pacman/hello/introducing-pacman-theme/" target="_blank" rel="external">参考</a></li>
+<li><a href="http://www.zhihu.com/question/24422335" target="_blank" rel="external">主题选择</a></li>
+<li><a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">主题: NexT</a></li>
+<li>Pacman是一款为Hexo打造的一款扁平化，有着响应式设计的主题。</li>
+</ul>
+<h4 id="1-安装-1"><a href="#1-安装-1" class="headerlink" title="1.安装"></a>1.安装</h4><ul>
+<li>安装pacman主题</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> https://github.com/A-limon/pacman.git themes/pacman</div></pre></td></tr></table></figure>
+<ul>
+<li><p>安装Next主题</p>
+</li>
+<li><p>详细配置步骤,参考 <code>Next</code> 的github项目说明.</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> your-hexo-site</div><div class="line">git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
+<h4 id="2-启用"><a href="#2-启用" class="headerlink" title="2.启用"></a>2.启用</h4><p>修改你的博客根目录下的config.yml配置文件中的theme属性，将其设置为pacman。同时请设置stylus属性中的compress值为true。</p>
+<h4 id="3-更新"><a href="#3-更新" class="headerlink" title="3.更新"></a>3.更新</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> themes/pacman</div><div class="line">git pull</div></pre></td></tr></table></figure>
+<p>请先备份你的_config.yml 文件后再升级</p>
+<h3 id="5-3安装插件"><a href="#5-3安装插件" class="headerlink" title="5.3安装插件"></a>5.3安装插件</h3><ul>
+<li><p><a href="http://cnfeat.com/2014/05/10/2014-05-11-how-to-build-a-blog/" target="_blank" rel="external">安装插件</a></p>
+<h4 id="1-安装-2"><a href="#1-安装-2" class="headerlink" title="1.安装"></a>1.安装</h4></li>
+<li><p>添加sitemap和feed插件</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-generator-sitemap  --save</div><div class="line">$ npm install hexo-generator-feed  --save</div></pre></td></tr></table></figure>
+<h4 id="2-启用-1"><a href="#2-启用-1" class="headerlink" title="2.启用"></a>2.启用</h4><ul>
+<li>修改_config.yml，增加以下内容</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"># Extensions</div><div class="line">Plugins:</div><div class="line">- hexo-generator-feed</div><div class="line">- hexo-generator-sitemap</div><div class="line"></div><div class="line">#Feed Atom</div><div class="line">feed:</div><div class="line">  type: atom</div><div class="line">  path: atom.xml</div><div class="line">  limit: 20</div><div class="line"></div><div class="line">#sitemap</div><div class="line">sitemap:</div><div class="line">  path: sitemap.xml</div></pre></td></tr></table></figure>
+<h3 id="5-4配置sitemap-提高搜索引擎收录效果"><a href="#5-4配置sitemap-提高搜索引擎收录效果" class="headerlink" title="5.4配置sitemap(提高搜索引擎收录效果)"></a>5.4配置sitemap(提高搜索引擎收录效果)</h3><p>使用hexo提供的插件，方法与添加RSS类似。</p>
+<ul>
+<li>安装sitemap插件到本地：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-sitemap</div></pre></td></tr></table></figure>
+<ul>
+<li>开启sitemap功能：编辑hexo/_config.yml，添加如下代码：</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">plugins:</div><div class="line">- hexo-generator-sitemap</div></pre></td></tr></table></figure>
+<ul>
+<li>访问hexo/public/sitemap.xml即可看到站点地图。</li>
+<li>为了提高搜索引擎对自己站点的收录效果，我们最好手动到google和百度等搜索引擎提交sitemap.xml。</li>
+</ul>
+<h3 id="5-5自定义-Next-主题的-config文件"><a href="#5-5自定义-Next-主题的-config文件" class="headerlink" title="5.5自定义 Next 主题的_config文件"></a>5.5自定义 Next 主题的_config文件</h3><h4 id="修改文件-themes-next-config-yml"><a href="#修改文件-themes-next-config-yml" class="headerlink" title="修改文件: themes/next/_config.yml"></a>修改文件: themes/next/_config.yml</h4><h4 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果:"></a>实现效果:</h4><ul>
+<li>实现添加: 标签(tag)页面</li>
+<li>实现添加: 关于(about)页面</li>
+<li>更改导航头像avatar</li>
+<li>关闭自动对文章段落标题加标号</li>
+<li>布局紧凑模式</li>
+<li>始终显示右侧导航</li>
+<li>修改代码高亮主题为: night eighties</li>
+</ul>
+<h4 id="config-yml完整内容"><a href="#config-yml完整内容" class="headerlink" title="_config.yml完整内容:"></a>_config.yml完整内容:</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line"># when running hexo in a subdirectory (e.g. domain.tld/blog), remove leading slashes ( "/archives" -&gt; "archives" )</div><div class="line">menu:</div><div class="line">  home: /</div><div class="line">  archives: /archives</div><div class="line">  categories: /categories</div><div class="line">  tags: /tags</div><div class="line">  about: /about</div><div class="line">  #commonweal: /404.html</div><div class="line"></div><div class="line"># head</div><div class="line">avatar: http://www.gravatar.com/avatar/b9b00e66c6b8a70f88c73cb6bdb06787</div><div class="line"></div><div class="line"># Place your favicon.ico to /source directory.</div><div class="line">favicon: /favicon.ico</div><div class="line"></div><div class="line"># Set default keywords (Use a comma to separate)</div><div class="line">keywords: "Hexo,next"</div><div class="line"></div><div class="line"># Set rss to false to disable feed link.</div><div class="line"># Leave rss as empty to use site's feed link.</div><div class="line"># Set rss to specific value if you have burned your feed already.</div><div class="line">rss: /atom.xml</div><div class="line"></div><div class="line"># Icon fonts</div><div class="line"># Place your font into next/source/fonts, specify directory-name and font-name here</div><div class="line"># Avialable: default | linecons | fifty-shades | feather</div><div class="line">icon_font: default</div><div class="line">#icon_font: fifty-shades</div><div class="line">#icon_font: feather</div><div class="line">#icon_font: linecons</div><div class="line"></div><div class="line"># Code Highlight theme</div><div class="line"># Available value: normal | night | night eighties | night blue | night bright</div><div class="line"># https://github.com/chriskempson/tomorrow-theme</div><div class="line">highlight_theme: night eighties</div><div class="line"></div><div class="line"></div><div class="line"># MathJax Support</div><div class="line">mathjax:</div><div class="line"></div><div class="line"></div><div class="line"># Schemes</div><div class="line">scheme: Mist</div><div class="line"></div><div class="line"></div><div class="line"># Sidebar, available value:</div><div class="line">#  - post    expand on posts automatically. Default.</div><div class="line">#  - always  expand for all pages automatically</div><div class="line">#  - hide    expand only when click on the sidebar toggle icon.</div><div class="line">#sidebar: post</div><div class="line">sidebar: always</div><div class="line">#sidebar: hide</div><div class="line"></div><div class="line"></div><div class="line"># Automatically scroll page to section which is under &lt;!-- more --&gt; mark.</div><div class="line">scroll_to_more: true</div><div class="line"></div><div class="line"></div><div class="line"># Automatically add list number to toc.</div><div class="line"># toc_list_number: true</div><div class="line">toc_list_number: false</div><div class="line"></div><div class="line">## DO NOT EDIT THE FOLLOWING SETTINGS</div><div class="line">## UNLESS YOU KNOW WHAT YOU ARE DOING</div><div class="line"></div><div class="line"># Use velocity to animate everything.</div><div class="line">use_motion: true</div><div class="line"></div><div class="line"># Fancybox</div><div class="line">fancybox: true</div><div class="line"></div><div class="line"># Static files</div><div class="line">vendors: vendors</div><div class="line">css: css</div><div class="line">js: js</div><div class="line">images: images</div><div class="line"></div><div class="line"># Theme version</div><div class="line">version: 0.4.3</div></pre></td></tr></table></figure>
+<h2 id="6-etc"><a href="#6-etc" class="headerlink" title="6.etc"></a>6.etc</h2><h3 id="6-1-图床"><a href="#6-1-图床" class="headerlink" title="6.1 图床"></a>6.1 图床</h3><ul>
+<li>七牛(10G免费)</li>
+</ul>
+<h3 id="6-2-出错问题解决"><a href="#6-2-出错问题解决" class="headerlink" title="6.2 出错问题解决:"></a>6.2 出错问题解决:</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本篇介绍利用Github和Hexo搭建技术博客的详细过程,以及各种优化配置.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://llinmeng.github.io/categories/Hexo/"/>
+    
+    
+      <category term="Github" scheme="http://llinmeng.github.io/tags/Github/"/>
+    
+      <category term="Git" scheme="http://llinmeng.github.io/tags/Git/"/>
+    
+      <category term="Hexo" scheme="http://llinmeng.github.io/tags/Hexo/"/>
+    
+      <category term="Blog" scheme="http://llinmeng.github.io/tags/Blog/"/>
+    
+      <category term="Nodejs" scheme="http://llinmeng.github.io/tags/Nodejs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git配置教程</title>
+    <link href="http://llinmeng.github.io/2015/06/24/git-config-manual/"/>
+    <id>http://llinmeng.github.io/2015/06/24/git-config-manual/</id>
+    <published>2015-06-24T21:15:30.000Z</published>
+    <updated>2016-11-26T08:03:18.791Z</updated>
+    
+    <content type="html"><![CDATA[<p>本篇详细介绍Git的配置过程,以及常用Git命令.</p>
+<a id="more"></a>
+<h2 id="Part-1-配置git环境"><a href="#Part-1-配置git环境" class="headerlink" title="Part 1: 配置git环境"></a>Part 1: <code>配置git环境</code></h2><h3 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1.准备工作:"></a>1.准备工作:</h3><ul>
+<li>1.下载并安装git软件.<ul>
+<li><a href="http://git-scm.com/" target="_blank" rel="external">git下载地址</a></li>
+</ul>
+</li>
+<li>2.注册 github 账号,或者 bitbucket 账号,并新建一个代码仓库.<ul>
+<li><a href="www.github.com">github地址</a></li>
+<li><a href="www.bitbucket.org">bitbucket地址</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="2-配置步骤"><a href="#2-配置步骤" class="headerlink" title="2.配置步骤:"></a>2.配置步骤:</h3><h4 id="1-如果没有安装ssh"><a href="#1-如果没有安装ssh" class="headerlink" title="1.如果没有安装ssh."></a>1.如果没有安装ssh.</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ubuntu 版本操作:</div><div class="line">sudo apt-get install ssh</div></pre></td></tr></table></figure>
+<h3 id="2-检查SSH公钥是否存在"><a href="#2-检查SSH公钥是否存在" class="headerlink" title="2.检查SSH公钥是否存在"></a>2.检查SSH公钥是否存在</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~/.ssh</div><div class="line"></div><div class="line">查看是否存在.ssh，若存在，跳过下一步.</div><div class="line">不存在,请看下一步.</div></pre></td></tr></table></figure>
+<h4 id="3-生成SSH公钥"><a href="#3-生成SSH公钥" class="headerlink" title="3.生成SSH公钥"></a>3.生成SSH公钥</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">windows 版本操作:</div><div class="line">安装完 git, 在开始菜单,找到 git 下的 git-bash, 进入git自带模拟终端.</div><div class="line"></div><div class="line">输入如下命令:</div><div class="line">$ ssh-keygen -t rsa -C <span class="string">"xxx@gmail.com"</span></div><div class="line">按3个回车，密码为空。</div><div class="line"></div><div class="line">最后得到了两个文件：id_rsa和id_rsa.pub</div><div class="line"></div><div class="line">特别说明:</div><div class="line">默认后续所有命令操作,都是在 git-bash 下进行.</div><div class="line">请不要在windows的CMD命令窗口下操作git.</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">ubuntu 版本操作:</div><div class="line">终端输入如下命令:</div><div class="line">$ ssh-keygen -t rsa -C <span class="string">"your_email@youremail.com"</span> </div><div class="line">按3个回车，密码为空。</div><div class="line">    </div><div class="line">然后可以看到:</div><div class="line">Your identification has been saved <span class="keyword">in</span> /home/you/.ssh/id_rsa. </div><div class="line"><span class="comment"># Your public key has been saved in /home/you/.ssh/id_rsa.pub.</span></div><div class="line"><span class="comment"># The key fingerprint is: </span></div><div class="line"><span class="comment"># 01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@youremail.com</span></div><div class="line"></div><div class="line">最后得到了两个文件：id_rsa和id_rsa.pub</div></pre></td></tr></table></figure>
+<h4 id="4-添加SSH公钥到github"><a href="#4-添加SSH公钥到github" class="headerlink" title="4.添加SSH公钥到github"></a>4.添加SSH公钥到github</h4><ul>
+<li><a href="www.github.com">github地址</a></li>
+<li><a href="www.bitbucket.org">bitbucket地址</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">步骤:</div><div class="line">1. 打开github.</div><div class="line">2. 进入Account Settings.</div><div class="line">3. 左边,选择SSH Keys.</div><div class="line">4. 选择Add SSH Key.</div><div class="line">5. title随便填，把 id_rsa.pub 内容复制到key里,保存。</div></pre></td></tr></table></figure>
+<h4 id="5-测试key是否生效"><a href="#5-测试key是否生效" class="headerlink" title="5.测试key是否生效"></a>5.测试key是否生效</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">输入如下命令测试:</div><div class="line">ssh -T git@github.com</div><div class="line"></div><div class="line">当看到如下提示信息，直接输入: yes</div><div class="line">The authenticity of host <span class="string">'github.com (207.97.227.239)'</span> can<span class="string">'t be established. </span></div><div class="line">RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48. </div><div class="line">Are you sure you want to continue connecting (yes/no)?</div><div class="line"></div><div class="line">当看到如下提示信息，说明配置成功。</div><div class="line">Hi username! </div><div class="line">You've successfully authenticated, but GitHub does not provide shell access.</div></pre></td></tr></table></figure>
+<h2 id="Part-2-使用github仓库-bitbucket类似"><a href="#Part-2-使用github仓库-bitbucket类似" class="headerlink" title="Part 2: 使用github仓库(bitbucket类似)"></a>Part 2: <code>使用github仓库</code>(bitbucket类似)</h2><h3 id="1-获取github仓库源码"><a href="#1-获取github仓库源码" class="headerlink" title="1.获取github仓库源码:"></a>1.获取github仓库源码:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> 到 本机常用代码目录.</div><div class="line">输入如下命令:(如下命令,可以从 github 的代码仓库拷贝)</div><div class="line">$ git <span class="built_in">clone</span> git@github.com:your_name/github-services.git</div><div class="line"></div><div class="line">命令执行成功,本地代码目录下,会产生一个 repo 仓库.</div></pre></td></tr></table></figure>
+<h3 id="2-常用git操作命令"><a href="#2-常用git操作命令" class="headerlink" title="2.常用git操作命令."></a>2.常用git操作命令.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">1. 仓库初始化: git init</div><div class="line">2. 查看状态: git status</div><div class="line">3. 添加控制: git add .</div><div class="line">4. 添加单个文件: git add XXX</div><div class="line">5. 添加注释: git commit -m <span class="string">"your commit message."</span></div><div class="line">6. 提交到远端仓库: git push origin master</div><div class="line">7. 获取最新代码: git pull origin master</div><div class="line">8. 打版本标签: git tag 1.0.0 1b2e1d63ff</div><div class="line">9. 查看版本标签: git tag <span class="_">-l</span></div><div class="line">10. 提交版本标签: git push origin --tags</div><div class="line">11. 查看区别: git diff &lt;source_branch&gt; &lt;target_branch&gt;</div><div class="line">12. 删除文件: git rm XXX.XXX</div><div class="line">13. 重命名:   git mv AAA.XXX BBB.XXX</div><div class="line">14. 拷贝代码仓库至本地: git <span class="built_in">clone</span> XXXXX.git</div></pre></td></tr></table></figure>
+<h3 id="3-重要git操作tips"><a href="#3-重要git操作tips" class="headerlink" title="3.重要git操作tips."></a>3.重要git操作tips.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">1. 完成添加tag操作步骤:</div><div class="line">    git tag                    <span class="comment"># 显示已经存在的tag标记</span></div><div class="line">    git show tag XXX           <span class="comment"># 显示详细的tag信息</span></div><div class="line">    git tag 1.0.0 1b2e1d63ff   <span class="comment"># 对某次提交,添加tag</span></div><div class="line">    git tag <span class="_">-a</span> &lt;tagname&gt; -m <span class="string">"blablabla..."</span>  <span class="comment"># 可以指定标签信息；</span></div><div class="line">    git push origin --tags     <span class="comment"># 推送所有本地tags至远端仓库</span></div><div class="line">    git push origin [tagname]  <span class="comment"># 推送单个tag至远端仓库.</span></div><div class="line">2. 删除标签:</div><div class="line">    git tag <span class="_">-d</span> [tagname]                   <span class="comment"># 删除</span></div><div class="line">    git push origin :refs/tags/[tagname]   <span class="comment"># 推送删除,至远端仓库.</span></div><div class="line"></div><div class="line"></div><div class="line">3. 获取,回退到某次tag提交.(给个示例)</div><div class="line">    git <span class="built_in">clone</span> git@bitbucket.org:wangdao_dev/doraemon.git   <span class="comment"># 克隆一个仓库</span></div><div class="line">    <span class="built_in">cd</span> doraemon                        <span class="comment"># 切换到仓库目录下</span></div><div class="line">    git fetch &amp;&amp; git checkout v0.01    <span class="comment"># 回退到某个tag标记时的仓库状态.</span></div><div class="line">    </div><div class="line">    </div><div class="line">4. 版本回退.(当前版本为A,但是有误删除某些文件,想恢复之前版本B中的部分文件.)</div><div class="line">    git reset --hard 9770724   <span class="comment"># 需要回退到的某个提交版本号</span></div><div class="line">    把版本B状态下,需要的文件拷贝出来.重新另<span class="built_in">clone</span>一份当前仓库服务器最新状态.把需要的文件,添加进去,重新提交.就可以恢复.</div><div class="line">    这是一种折中的办法.</div><div class="line">    git reset --hard 只是拿到 过去版本的 状态.并没产生提交和回滚.git服务器端,依然只有停留在最后的提交状态.</div><div class="line">    </div><div class="line"></div><div class="line">5. git reset与revert的区别</div><div class="line"></div><div class="line">    git revert是用一次新的commit来回滚之前的commit，git reset是直接删除指定的commit。</div><div class="line">    在回滚这一操作上看，效果差不多。但是在日后继续merge以前的老版本时有区别。因为git revert是用一次逆向的commit“中和”之前的提交，因此日后合并老的branch时，导致这部分改变不会再次出现，但是git reset是之间把某些commit在某个branch上删除，因而和老的branch再次merge时，这些被回滚的commit应该还会被引入。</div><div class="line">    git reset 是把HEAD向后移动了一下，而git revert是HEAD继续前进，只是新的commit的内容和要revert的内容正好相反，能够抵消要被revert的内容。</div></pre></td></tr></table></figure>
+<h3 id="4-一篇不错的文档"><a href="#4-一篇不错的文档" class="headerlink" title="4. 一篇不错的文档"></a>4. 一篇不错的文档</h3><ul>
+<li><a href="http://lugir.com/git-basic.html" target="_blank" rel="external">Git 教程 - Git 基本用法</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">Git 是当前最流行的版本控制程序之一，文本包含了 Git 的一些基本用法</div><div class="line"></div><div class="line">创建 git 仓库</div><div class="line">　　初始化 git 仓库</div><div class="line">mkdir project <span class="comment"># 创建项目目录</span></div><div class="line"><span class="built_in">cd</span> project <span class="comment"># 进入到项目目录</span></div><div class="line">git init <span class="comment"># 初始化 git 仓库。此命令会在当前目录新建一个 .git 目录，用于存储 git 仓库的相关信息</span></div><div class="line">　　</div><div class="line">　　初始化提交</div><div class="line">touch README</div><div class="line">git add . <span class="comment"># 将当前目录添加到 git 仓库中， 使用 git add -A 则是添加所有改动的文档</span></div><div class="line">git commit -m <span class="string">"Initial commit"</span></div><div class="line">git remote add origin git@github.com:lugir/repo.git <span class="comment"># 设置仓库</span></div><div class="line">　　修补提交（修补最近一次的提交而不创建新的提交）</div><div class="line">git commit --amend -m <span class="string">"commit message."</span></div><div class="line">　　提交冲突时可以合并后再推送</div><div class="line">git pull <span class="comment"># 获取远程版本库提交与本地提交进行合并</span></div><div class="line">git push <span class="comment"># 提交</span></div><div class="line"></div><div class="line">使用别人的仓库</div><div class="line">git <span class="built_in">clone</span> http://path/to/git.git <span class="comment"># clone 的内容会放在当前目录下的新目录</span></div><div class="line"></div><div class="line">将代码从本地回传到仓库</div><div class="line">git push -u origin master</div><div class="line"></div><div class="line">使用 git status 查看文件状态</div><div class="line">git status</div><div class="line"></div><div class="line">查看提交日志</div><div class="line">git <span class="built_in">log</span> <span class="comment"># 查看提交信息</span></div><div class="line">git <span class="built_in">log</span> --pretty=oneline <span class="comment"># 以整洁的单行形式显示提交信息</span></div><div class="line">git <span class="built_in">log</span> --stat <span class="comment"># 查看提交信息及更新的文件</span></div><div class="line"></div><div class="line">Git 分支</div><div class="line">git branch <span class="comment"># 查看分支</span></div><div class="line">git branch 6.x-1.x <span class="comment"># 添加分支 6.x-1.x</span></div><div class="line">git branch checkout master <span class="comment"># 切换到主分支</span></div><div class="line">git branch <span class="_">-d</span> 6.x-1.x <span class="comment"># 删除分支 6.x-1.x</span></div><div class="line">git push origin :branchname <span class="comment"># 删除远端分支</span></div><div class="line"></div><div class="line">Git 标签</div><div class="line">git tag <span class="comment"># 查看分支</span></div><div class="line">git tag 6.x-1.0 <span class="comment"># 添加标签 6.x-1.0</span></div><div class="line">git show 6.x-1.0 <span class="comment"># 查看标签 6.x-1.0 的信息</span></div><div class="line">git tag <span class="_">-a</span> 6.x-1.0 965e066 <span class="comment"># 为之前提交的信息记录 965e066 加上标签</span></div><div class="line">git push --tags <span class="comment"># 提交时带上标签信息</span></div><div class="line">git push origin :/refs/tags/tagname <span class="comment"># 删除远端标签</span></div><div class="line"></div><div class="line">从 git 仓库中导出项目</div><div class="line">git archive --format tar --output /path/to/file.tar master <span class="comment"># 将 master 以 tar 格式打包到指定文件</span></div><div class="line"></div><div class="line">使用 Git 的一些基本守则：</div><div class="line">当要commit/提交patch时：</div><div class="line">使用 git diff --check 检查行尾有没有多余的空白</div><div class="line">每个 commit 只改一件事情。如果一个文档有多个变更，使用 git add --patch 只选择文档中的部分变更进入 stage</div><div class="line">写清楚 commit message</div></pre></td></tr></table></figure>
+<h2 id="Part-3-git多账号管理"><a href="#Part-3-git多账号管理" class="headerlink" title="Part 3: git多账号管理."></a>Part 3: git多账号管理.</h2><ul>
+<li><a href="http://my.oschina.net/meilihao/blog/157716" target="_blank" rel="external">参考文档</a></li>
+<li><a href="http://xuyuan923.github.io/2014/11/04/github-gitlab-ssh/" target="_blank" rel="external">github/gitlab同时管理多个ssh key -详细</a></li>
+</ul>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求:"></a>需求:</h3><ul>
+<li>有多个github账号.或者bitbucket账号不想用同一个ssh key.</li>
+<li>git bash默认只会找: ~/.ssh/id_rsa的key</li>
+<li>需要使用ssh的多账号功能.</li>
+</ul>
+<h3 id="1-配置config文件"><a href="#1-配置config文件" class="headerlink" title="1.配置config文件."></a>1.配置config文件.</h3><p>解决方法很简单,需要配置~/.ssh/config文件(没有则新建,没有扩展名) </p>
+<ul>
+<li>config 配置文件格式:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Host myhost  （是自定义host简称，以后连接远程服务器就可以用命令ssh myhost）[注意下面有缩进]</div><div class="line">   User         登录用户名(如：git)</div><div class="line">   HostName     主机名可用ip也可以是域名(如:github.com或者bitbucket.org)</div><div class="line">   Port         服务器open-ssh端口（默认：22,默认时一般不写此行）</div><div class="line">   IdentityFile 证书文件路径（如~/.ssh/id_rsa_*)</div></pre></td></tr></table></figure>
+<ul>
+<li>示例 config:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Host meilihao.github.com</div><div class="line">   HostName github.com</div><div class="line">   User git</div><div class="line">   IdentityFile ~/.ssh/id_rsa_github</div></pre></td></tr></table></figure>
+<h3 id="2-修改github对应repo的URL"><a href="#2-修改github对应repo的URL" class="headerlink" title="2.修改github对应repo的URL"></a>2.修改github对应repo的URL</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">原地址:</div><div class="line">git@github.com:meilihao/gopkg.git</div><div class="line"></div><div class="line">修改后地址:</div><div class="line">git@meilihao.github.com:meilihao/gopkg.git   <span class="comment"># 注意修改点.</span></div></pre></td></tr></table></figure>
+<h3 id="3-测试修改是否正常"><a href="#3-测试修改是否正常" class="headerlink" title="3.测试修改是否正常."></a>3.测试修改是否正常.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh -T yourHost     //我这是: ssh -T meilihao.github.com</div></pre></td></tr></table></figure>
+<h3 id="4-修改git提交URL"><a href="#4-修改git提交URL" class="headerlink" title="4.修改git提交URL."></a>4.修改git提交URL.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git remote rm origin </div><div class="line">git remote add origin git@meilihao.github.com:meilihao/gopkg.git   <span class="comment"># 注意修改的细节点,变化处.</span></div></pre></td></tr></table></figure>
+<h3 id="5-使用sourcetree的多账号"><a href="#5-使用sourcetree的多账号" class="headerlink" title="5.使用sourcetree的多账号."></a>5.使用sourcetree的多账号.</h3><ul>
+<li>记得修改config文件,</li>
+<li>同时在”Tools”菜单的”add ssh key”中选择私钥,</li>
+<li>最重要的是clone时要使用修改后的path.</li>
+</ul>
+<h3 id="6-报错信息"><a href="#6-报错信息" class="headerlink" title="6.报错信息."></a>6.报错信息.</h3><ul>
+<li>1.//git clone 项目时提示Host key verification failed</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; 使用 ssh 协议时会验证对方服务器的 key。</div><div class="line">&gt; ssh无法确认服务器出示的 key 是可信认的，所以问你这个 key 是不是真的是你要连接的那个服务器的。</div><div class="line">&gt; 你没说「yes」所以 ssh 认为你不想继续连接，结果当然是连接失败</div></pre></td></tr></table></figure>
+<ul>
+<li>2.//git clone Permissions 0644 for ‘~/.ssh/id_rsa’ are too open</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">把文件权限,降到0600.</div></pre></td></tr></table></figure>
+<ul>
+<li><ol>
+<li>// git push 始终报错. 提示 仓库不存在,或者没有访问权限. 解决办法:<ul>
+<li><ol>
+<li>因为存在多个SSH-KEY, 单纯修改设置好 .ssh/config文件,是不够的.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># .ssh/config内容:</span></div><div class="line"><span class="comment">###############################</span></div><div class="line"><span class="comment"># github setting</span></div><div class="line">Host llm_git</div><div class="line">    HostName github.com</div><div class="line">    User git</div><div class="line">    IdentityFile C:\Users\XXXX\.ssh\id_rsa_llm_github</div></pre></td></tr></table></figure>
+<pre><code>- 2. 需要对应修改已经clone下来的项目目录中的.git/config文件中的配置参数.
+</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[remote <span class="string">"origin"</span>]</div><div class="line">    url = llm_git:XXXX/XXX_project.git    <span class="comment"># 修改默认的github路径为 host 名称.</span></div><div class="line">    fetch = +refs/heads/*:refs/remotes/origin/*</div></pre></td></tr></table></figure>
+<pre><code>- 3. 再次执行: git push, 就可以正常提交代码.而不会报权限问题错误.
+</code></pre><h3 id="参考-git多账号管理"><a href="#参考-git多账号管理" class="headerlink" title="参考: git多账号管理"></a>参考: git多账号管理</h3><p>以前用github的ssh key，后来工作原因多了一个gitlab的账号，在绑定gitlab的ssh key时，发现将github的ssh key覆盖了。怎么同时绑定github和gitlab的ssh key，并不产生冲突呢？ 今天找到了个小技巧，在.ssh目录下新建一个config文件配置一下，就能解决gitlab与github的ssh key的冲突。</p>
+<h4 id="生成并添加第一个ssh-key"><a href="#生成并添加第一个ssh-key" class="headerlink" title="生成并添加第一个ssh key"></a>生成并添加第一个ssh key</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~/.ssh</div><div class="line">ssh  ssh-keygen -t ras -C <span class="string">"youremail@yourcompany.com"</span></div><div class="line"></div><div class="line">这时可以一路回车，不输入任何字符，将自动生成id_rsa和id_rsa.pub文件。</div></pre></td></tr></table></figure>
+<h4 id="生成并添加第二个ssh-key"><a href="#生成并添加第二个ssh-key" class="headerlink" title="生成并添加第二个ssh key"></a>生成并添加第二个ssh key</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C <span class="string">"youremail@gmail.com"</span></div><div class="line"></div><div class="line">注意，这时不能一路回车，否则邮箱将覆盖上一次生成的ssh key，</div><div class="line">给这个文件起一个名字， 比如叫 id_rsa_github, </div><div class="line">所以相应的也会生成一个 id_rsa_github.pub 文件。</div></pre></td></tr></table></figure>
+<h4 id="查看-ssh下的目录文件，发现多了id-rsa-github和id-rsa-github-pub两个文件。"><a href="#查看-ssh下的目录文件，发现多了id-rsa-github和id-rsa-github-pub两个文件。" class="headerlink" title="查看.ssh下的目录文件，发现多了id_rsa_github和id_rsa_github.pub两个文件。"></a>查看.ssh下的目录文件，发现多了id_rsa_github和id_rsa_github.pub两个文件。</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-&gt; .ssh ls</div></pre></td></tr></table></figure>
+<h4 id="添加私钥"><a href="#添加私钥" class="headerlink" title="添加私钥"></a>添加私钥</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ ssh-add ~/.ssh/id_rsa</div><div class="line">$ ssh-add ~/.ssh/id_rsa_github</div></pre></td></tr></table></figure>
+<h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><ul>
+<li>在 ~/.ssh 目录下新建一个config文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch config</div></pre></td></tr></table></figure>
+<ul>
+<li>添加以下内容</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># gitlab</span></div><div class="line">Host gitlab.com</div><div class="line">    HostName gitlab.com</div><div class="line">    PreferredAuthentications publickey</div><div class="line">    IdentityFile ~/.ssh/id_rsa</div><div class="line"></div><div class="line"><span class="comment"># github</span></div><div class="line">Host github.com</div><div class="line">    HostName github.com</div><div class="line">    PreferredAuthentications publickey</div><div class="line">    IdentityFile ~/.ssh/id_rsa_github</div></pre></td></tr></table></figure>
+<h4 id="给github-gitlab上添加ssh-key"><a href="#给github-gitlab上添加ssh-key" class="headerlink" title="给github/gitlab上添加ssh key"></a>给github/gitlab上添加ssh key</h4><p>查看ssh key执行cat id_rsa_github.pub内容，将文本内容拷贝到<a href="https://github.com/settings/ssh。" target="_blank" rel="external">https://github.com/settings/ssh。</a><br>生成ssh key的方法可以去看官方教程，这里不再赘述。</p>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ ssh -T git@github.com</div><div class="line"></div><div class="line">如果输出</div><div class="line">Hi xuyuan923! You<span class="string">'ve successfully authenticated, but GitHub does not provide shell access.</span></div><div class="line">说明成功的连上github了。</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="Part-4-扩展阅读"><a href="#Part-4-扩展阅读" class="headerlink" title="Part 4: 扩展阅读."></a>Part 4: 扩展阅读.</h2><h3 id="1-github官方帮助文档-以下必看"><a href="#1-github官方帮助文档-以下必看" class="headerlink" title="1.github官方帮助文档:(以下必看)"></a>1.github官方帮助文档:(以下必看)</h3><ul>
+<li>推荐git教程<a href="http://git-scm.com/book/zh/v1" target="_blank" rel="external">git book</a></li>
+<li>官方帮助<a href="https://help.github.com/" target="_blank" rel="external">总目录</a></li>
+<li>配置第一步.<a href="https://help.github.com/articles/generating-ssh-keys/" target="_blank" rel="external">Generating SSH keys</a></li>
+<li>出错解决.<a href="https://help.github.com/articles/error-permission-denied-publickey/" target="_blank" rel="external">Error: Permission denied (publickey)</a></li>
+<li>克隆远端仓库.<a href="https://help.github.com/articles/cloning-a-repository/" target="_blank" rel="external">Cloning a repository</a></li>
+<li>gitignore文件.<a href="https://github.com/github/gitignore" target="_blank" rel="external">全部列表</a></li>
+<li>git常用操作命令集.<a href="https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf" target="_blank" rel="external">cheat-sheet</a></li>
+<li>markdown学习使用.<a href="https://help.github.com/articles/markdown-basics/" target="_blank" rel="external">markdown教程</a></li>
+<li>Mac专属.<a href="https://help.github.com/categories/github-for-mac/" target="_blank" rel="external">GitHub for Mac</a></li>
+<li>windows专属.<a href="https://help.github.com/categories/github-for-windows/" target="_blank" rel="external">GitHub for Windows</a></li>
+</ul>
+<h3 id="2-其他"><a href="#2-其他" class="headerlink" title="2.其他:"></a>2.其他:</h3><ul>
+<li><a href="http://www.bootcss.com/p/git-guide/" target="_blank" rel="external">官方简易教程</a></li>
+<li><a href="http://blog.itpub.net/25851087/viewspace-1262468/" target="_blank" rel="external">permission deny问题</a></li>
+<li><a href="http://blog.163.com/www_iloveyou_com/blog/static/2116583722013111113954760/" target="_blank" rel="external">git教程-很全面</a></li>
+<li><a href="http://blog.chinaunix.net/uid-26185912-id-3327885.html" target="_blank" rel="external">git生成SSH公钥</a></li>
+<li><a href="http://git-scm.com/book/zh/v1/Git-%E5%9F%BA%E7%A1%80-%E6%89%93%E6%A0%87%E7%AD%BE" target="_blank" rel="external">git打标签tag</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本篇详细介绍Git的配置过程,以及常用Git命令.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Git" scheme="http://llinmeng.github.io/categories/Git/"/>
+    
+    
+      <category term="Mac" scheme="http://llinmeng.github.io/tags/Mac/"/>
+    
+      <category term="Github" scheme="http://llinmeng.github.io/tags/Github/"/>
+    
+      <category term="Git" scheme="http://llinmeng.github.io/tags/Git/"/>
+    
+      <category term="SSH" scheme="http://llinmeng.github.io/tags/SSH/"/>
+    
+  </entry>
+  
+</feed>
